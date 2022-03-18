@@ -35,18 +35,18 @@ class CProgression
     }
     function afficherGraph($joueur)
     {
-       $width = 600; $height = 200;
+        $width = 600; $height = 200;
  
         // Create a graph instance
         $graph = new Graph($width,$height);
          
         // Specify what scale we want to use,
         // int = integer scale for the X-axis
-        // int = integer scale for the Y-axis
-        $graph->SetScale('intint');
+        // int = integer scale for the Y-axis   
+        $graph->ygrid->Show();
          
         // Setup a title for the graph
-        $graph->title->Set('Sunspot example');
+       /* $graph->title->Set('Progression');
          
         // Setup titles and X-axis labels
         $graph->xaxis->title->Set('(year from 1701)');
@@ -61,7 +61,7 @@ class CProgression
         $graph->Add($lineplot);
          
         // Display the graph
-        $graph->Stroke();
+        $graph->Stroke(); */
     }
 }
 ?>
