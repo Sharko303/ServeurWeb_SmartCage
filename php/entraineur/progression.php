@@ -31,6 +31,7 @@ if(!empty($_POST['submit'])) // je verifie que le bouton "Progression a bien ét
             echo 'Choisir un joueur';
          }else
          {
+            $joueur = $_POST["nom"];
             $liste->afficherJoueur();
             $liste->afficherGraph($joueur);
          }
