@@ -16,7 +16,7 @@ if ($nom != 0){
         echo json_encode('Mauvaises Informations');
     }
     else{
-        exho json_encode('ok');
+        echo json_encode('ok');
     }
 }
 else{
