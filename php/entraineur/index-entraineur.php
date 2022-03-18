@@ -22,7 +22,7 @@ if ($_SESSION["type"] == 'joueur')
         <nav>   
             <ul>    
                     <li> <a href="/SmartCage/php/entraineur/joueur.php"> Joueur </a> </li>
-                    <li> <a href="seance.html"> Séance </a> </li>
+                    <li> <a href="seance.php"> Séance </a> </li>
                     <li> <a href="/SmartCage/inscription.php"> Inscription </a> </li>
                     <li> <a href="/SmartCage/deconnexion.php"> Déconnexion </a> </li>
             </ul>
