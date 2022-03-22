@@ -8,7 +8,6 @@ $nom = $obj['nom'];
 // Populate Password from JSON $obj array and store into $password.
 $password = $obj['password']; 
 // Populate type from JSON $obj array and store into $type.
-$type = $obj['type'];
 
 if ($obj['nom']!=""){
     $result = $bdd->query("SELECT * FROM utilisateurs WHERE nom = '$nom' and password = '$password'");
@@ -18,6 +17,9 @@ if ($obj['nom']!=""){
         else if($result->rowCount()==1){
             $userinfo = $result->fetch();
             echo json_encode('ok');
+            if($result['type'] == 'entraineur'){
+                echo json_encode('entraineur');
+            }
         }
 }
 else{
