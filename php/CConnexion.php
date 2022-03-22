@@ -52,7 +52,7 @@ class CConnexion
       session_start();
       session_unset();
       session_destroy();
-      header('Location: /SmartCage/index.html');
+      header('Location: /ServeurWeb_SmartCage/index.html');
       exit();
    }
 }

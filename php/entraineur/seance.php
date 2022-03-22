@@ -3,12 +3,12 @@ require_once 'CSeance.php';
 session_start();
 if(!isset($_SESSION["nom"])) // je vérifie si l'utilisateur a
 {
-    header("Location: /SmartCage/connexion.php");
+    header("Location: /ServeurWeb_SmartCage/connexion.php");
     exit(); 
   }
 if ($_SESSION["type"] == 'joueur')
 {
-    header("Location: /SmartCage/php/interdit.php");
+    header("Location: /ServeurWeb_SmartCage/php/interdit.php");
 }
 ?>
 <!DOCTYPE html>
@@ -58,12 +58,22 @@ if ($_SESSION["type"] == 'joueur')
                     }
                 }
                 ?>
+            <script>
+                    function setColor(e) 
+                    {
+                       var target = e.target,
+                           status = e.target.classList.contains('active');
+
+                       e.target.classList.add(status ? 'inactive' : 'active');
+                       e.target.classList.remove(status ? 'active' : 'inactive'); 
+                    }
+            </script>
             <div id="container">
             <form action="php/creer_seance.php" method="post">
                 <h1>Nouvelle seance</h1>
-                    Nom de l'entraineur :
-                <select name="nom" >
-                <option value=0>Choisir
+                    <b>Nom de l'entraineur :</b>
+                <select name="nom" required>
+                <option value="">Choisir
 <?php
         $liste = new CSeance();
         $liste->_bdd = $bdd;
@@ -71,29 +81,32 @@ if ($_SESSION["type"] == 'joueur')
 ?>
 
 
-   </select>    <br>
+                </select>    <br>
+
                 <label><b>Categorie :</b></label>       
-                    <select name="categorie" class="categorie">
-                    <option value="aucune">aucune</option>
+                    <select name="categorie" class="categorie" required>
+                    <option value="">aucune</option>
                     <option value="U7">U6/U7</option>
                     <option value="U9">U8/U9</option>
                     <option value="U13">U10-U13</option>
                     <option value="U15+">U15+</option>
                     </select> <br>
+                    <b>Zone de tir :</b>
                     <div class="btn-group mb-3" role="group" aria-label="Groupe de boutons">
-                <button type="button" class="bouton"></button>
-                <button type="button" class="bouton"></button>
-                <button type="button" class="bouton"></button>
+                <input type="button" id="button" class="inactive" value = "1" style= "color:white; padding-right: 20px; " onclick="setColor(event)"; required />
+                <input type="button" class="inactive" id="button" value = "2" style= "color:white; padding-right: 20px; " onclick="setColor(event)";/>
+                <input type="button" class="inactive" id="button" value = "3" style= "color:white; padding-right: 20px; " onclick="setColor(event)";/>
+                
                 <br>
-                <button type="button" class="bouton"></button>
-                <button type="button" class="bouton"></button>
-                <button type="button" class="bouton"></button>
-                <br>
-                <button type="button" class="bouton"></button>
-                <button type="button" class="bouton"></button>
-                <button type="button" class="bouton"></button>
-             </div>
-                    <input type="submit" id='submit' value='CREER' name="submit">
+                <input type="button" class="inactive" id="button" value = "4" style= "color:white; padding-right: 20px; " onclick="setColor(event)";/>
+                <input type="button" class="inactive" id="button" value = "5" style= "color:white; padding-right: 20px; " onclick="setColor(event)";/>
+                <input type="button" class="inactive" id="button" value = "6" style= "color:white; padding-right: 20px; " onclick="setColor(event)";/>
+                <br>    
+                <input type="button" class="inactive" id="button" value = "7" style= "color:white; padding-right: 20px; " onclick="setColor(event)";/>
+                <input type="button" class="inactive" id="button" value = "8" style= "color:white; padding-right: 20px; " onclick="setColor(event)";/>
+                <input type="button" class="inactive" id="button" value = "9" style= "color:white; padding-right: 20px; " onclick="setColor(event)";/>
+
+                <input type="submit" id='submit' value='CREER' name="submit">
                     <a class="inscr" href="connexion.php">Ancienne</a>
             </form>
         </div>
@@ -175,9 +188,14 @@ if ($_SESSION["type"] == 'joueur')
                 margin-left: 20px;
                 margin-bottom: 10px;
             }
-            .bouton
+            .active 
             {
-                padding: 10px;
+                background-color: #7FFF00; 
+            }
+
+            .inactive 
+            {
+                background-color: #FF0000;
             }
         </style>
         </body>

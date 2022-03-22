@@ -2,12 +2,12 @@
 session_start();
 if(!isset($_SESSION["nom"])) // je vérifie si l'utilisateur a
 {
-    header("Location: /SmartCage/connexion.php");
+    header("Location: /ServeurWeb_SmartCage/connexion.php");
     exit(); 
   }
 if ($_SESSION["type"] == 'joueur')
 {
-    header("Location: /SmartCage/php/interdit.php");
+    header("Location: /ServeurWeb_SmartCage/php/interdit.php");
 }
 ?>
 <!DOCTYPE html>
@@ -15,25 +15,25 @@ if ($_SESSION["type"] == 'joueur')
         <head>
             <meta charset="UTF-8">
             <title>Inscription</title>
-             <link rel="stylesheet" href="/SmartCage/css/style.css" media="screen" type="text/css" />
+             <link rel="stylesheet" href="/ServeurWeb_SmartCage/css/style.css" media="screen" type="text/css" />
         </head>
         <body>
             <div class="menu">
         <nav>   
             <ul>    
-                    <li> <a href="/SmartCage/php/entraineur/joueur.php"> Joueur </a> </li>
+                    <li> <a href="joueur.php"> Joueur </a> </li>
                     <li> <a href="seance.php"> Séance </a> </li>
-                    <li> <a href="/SmartCage/inscription.php"> Inscription </a> </li>
-                    <li> <a href="/SmartCage/deconnexion.php"> Déconnexion </a> </li>
+                    <li> <a href="/ServeurWeb_SmartCage/inscription.php"> Inscription </a> </li>
+                    <li> <a href="/ServeurWeb_SmartCage/deconnexion.php"> Déconnexion </a> </li>
             </ul>
         </nav>
     </div>
 
         <div class="sucess">
     <h1 style="margin-bottom: 10px">Bienvenue <?php echo $_SESSION['nom']; ?>!</h1>
-    <img style="margin-bottom: 20px;" src="/SmartCage/images/fc_maurin.jpg">
+    <img style="margin-bottom: 20px;" src="/ServeurWeb_SmartCage/images/fc_maurin.jpg">
     <p style="margin-bottom: 20px;">C'est votre espace entraineur.</p>
-    <a href="/SmartCage/deconnexion.php">Déconnexion</a>
+    <a href="/ServeurWeb_SmartCage/deconnexion.php">Déconnexion</a>
     </div>
     <footer style="text-align: center; margin-top: 20px;">
         <p> Retrouver toutes les infos (RÉSULTATS & CALENDRIERS DU CLUB LES ÉQUIPES)</p>

@@ -2,12 +2,12 @@
 session_start();
 if(!isset($_SESSION["nom"])) // je vérifie si l'utilisateur a
 {
-    header("Location: /SmartCage/connexion.php");
+    header("Location: /ServeurWeb_SmartCage/connexion.php");
     exit(); 
   }
 if ($_SESSION["type"] == 'joueur')
 {
-    header("Location: /SmartCage/php/interdit.php");
+    header("Location: /ServeurWeb_SmartCage/php/interdit.php");
 }
 require_once 'CJoueur.php' 
 ?>
@@ -16,16 +16,16 @@ require_once 'CJoueur.php'
         <head>
             <meta charset="UTF-8">
             <title>Inscription</title>
-             <link rel="stylesheet" href="/SmartCage/css/style.css" media="screen" type="text/css" />
+             <link rel="stylesheet" href="/ServeurWeb_SmartCage/css/style.css" media="screen" type="text/css" />
         </head>
         <body>
             <div class="menu">
         <nav>   
             <ul>    
                     <li> <a href="joueur.php"> Joueur </a> </li>
-                    <li> <a href="seance.html"> Séance </a> </li>
-                    <li> <a href="/SmartCage/inscription.php"> Inscription </a> </li>
-                    <li> <a href="/SmartCage/deconnexion.php"> Déconnexion </a> </li>
+                    <li> <a href="seance.php"> Séance </a> </li>
+                    <li> <a href="/ServeurWeb_SmartCage/inscription.php"> Inscription </a> </li>
+                    <li> <a href="/ServeurWeb_SmartCage/deconnexion.php"> Déconnexion </a> </li>
             </ul>
         </nav>
     </div>
