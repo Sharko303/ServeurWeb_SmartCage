@@ -9,10 +9,6 @@ $nom = $obj['nom'];
 $password = hash('sha256',$obj['password']); 
 // Populate type from JSON $obj array and store into $type.
 
-function verif(){
-    echo json_encode('ok');
-}
-
 if ($obj['nom']!=""){
     $result = $bdd->query("SELECT * FROM utilisateurs WHERE nom = '$nom' and password = '$password'");
         if ($result->rowCount()==0){
@@ -20,7 +16,7 @@ if ($obj['nom']!=""){
         }
         else{
             $userinfo = $result->fetch();
-            verif();
+            echo json_encode('ok');
             $type = $result['type'];
         }
 }
