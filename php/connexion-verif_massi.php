@@ -17,6 +17,12 @@ if ($obj['nom']!=""){
         else{
             $userinfo = $result->fetch();
             echo json_encode('ok');
+            if ($userinfo['type']=='entraineur'){
+                echo json_encode('entraineur');
+            }
+            else if ($userinfo['type']=='joueur'){
+                echo json_encode('joueur');
+            }
         }
 }
 else{
