@@ -6,7 +6,7 @@ $obj = json_decode($json,true);
 // Populate User nom from JSON $obj array and store into $nom.
 $nom = $obj['nom']; 
 // Populate Password from JSON $obj array and store into $password.
-$password = $obj['password']; 
+$password = hash('sha256',$obj['password']); 
 // Populate type from JSON $obj array and store into $type.
 
 if ($obj['nom']!=""){
