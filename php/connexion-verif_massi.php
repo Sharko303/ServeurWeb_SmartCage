@@ -10,7 +10,7 @@ $nom = $obj['nom'];
 // Populate Password from JSON $obj array and store into $password.
 $password = $obj['password'];
 $result = PDO::query("SELECT * FROM utilisateurs WHERE nom = '$nom' and password = '$password'");
-if ($result->num_rows==){
+if ($result->num_rows==0){
    
     echo json_encode('Mauvaises Informations');
     else{
