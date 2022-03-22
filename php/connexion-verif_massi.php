@@ -17,14 +17,6 @@ if ($obj['nom']!=""){
         }
         else{
         echo json_encode('ok')
-        if($result->rowCount()==1){
-            if($type == "entraineur"){
-                echo json_encode('entraineur')
-            }
-            if($type == "joueur"){
-                echo json_encode('joueur')
-            }
-        }
         }
     }
 else{
