@@ -14,15 +14,14 @@ if ($obj['nom']!=""){
         if ($result->rowCount()==0){
             echo json_encode('Mauvaises Informations');
         }
-        else if($result->rowCount()==1){
+        else{
             $userinfo = $result->fetch();
             echo json_encode('ok');
-            if($result['type'] == 'entraineur'){
-                echo json_encode('entraineur');
-            }
         }
 }
 else{
     echo json_encode('ressayer');
 }
+
+
 ?>
