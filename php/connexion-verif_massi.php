@@ -7,16 +7,26 @@ $obj = json_decode($json,true);
 $nom = $obj['nom']; 
 // Populate Password from JSON $obj array and store into $password.
 $password = $obj['password'];
+//Type of users
+$type = $obj['type'];
 
 if ($obj['nom']!=""){
-    $result = $bdd->query("SELECT * FROM utilisateurs WHERE nom = '$nom' and password = '$password'");
+    $result = $bdd->query("SELECT * FROM utilisateurs WHERE nom = '$nom' and password = '$password' an type='$type'");
         if ($result->rowCount()==0){
             echo json_encode('Mauvaises Informations');
         }
         else{
-            echo json_encode('ok');
+        echo json_encode('ok')
+        if($result->rowCount()==1){
+            if($type == "entraineur"){
+                echo json_encode('entraineur')
+            }
+            if($type == "joueur"){
+                echo json_encode('joueur')
+            }
         }
-}
+        }
+    }
 else{
     echo json_encode('ressayer');
 }
