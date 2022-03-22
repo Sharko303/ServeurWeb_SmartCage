@@ -1,4 +1,5 @@
 <?php
+require_once 'CSeance.php';
 session_start();
 if(!isset($_SESSION["nom"])) // je vérifie si l'utilisateur a
 {
@@ -60,9 +61,18 @@ if ($_SESSION["type"] == 'joueur')
             <div id="container">
             <form action="php/creer_seance.php" method="post">
                 <h1>Nouvelle seance</h1>
-                    <label><b>Nom entraineur :</b></label>       
-                    <input type="text" name="nom" placeholder="Nom entraineur" required="required" autocomplete="off">
-                    <label><b>Categorie :</b></label>       
+                    Nom de l'entraineur :
+                <select name="nom" >
+                <option value=0>Choisir
+<?php
+        $liste = new CSeance();
+        $liste->_bdd = $bdd;
+        $liste->afficherListe();
+?>
+
+
+   </select>    <br>
+                <label><b>Categorie :</b></label>       
                     <select name="categorie" class="categorie">
                     <option value="aucune">aucune</option>
                     <option value="U7">U6/U7</option>
