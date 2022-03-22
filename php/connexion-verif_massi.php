@@ -9,7 +9,7 @@ $nom = $obj['nom'];
 $password = $obj['password'];
 
 if ($obj['nom']!=""){
-    $result = PDO::query("SELECT * FROM utilisateurs WHERE nom = '$nom' and password = '$password'");
+    $result = $bdd->query("SELECT * FROM utilisateurs WHERE nom = '$nom' and password = '$password'");
         if ($result->num_rows==0){
             echo json_encode('Mauvaises Informations');
         }
