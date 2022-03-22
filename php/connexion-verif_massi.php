@@ -16,9 +16,9 @@ if ($obj['nom']!=""){
             echo json_encode('Mauvaises Informations');
         }
         else{
-        echo json_encode('ok')
+            echo json_encode('ok');
         }
-    }
+}
 else{
     echo json_encode('ressayer');
 }
