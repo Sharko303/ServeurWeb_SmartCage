@@ -10,7 +10,7 @@ $password = $obj['password'];
 // Populate type from JSON $obj array and store into $type.
 
 if ($obj['nom']!=""){
-    $result = $bdd->query("SELECT * FROM utilisateurs WHERE nom = '$nom' and password = '$password'");
+    $result = $bdd->prepare("SELECT * FROM utilisateurs WHERE nom = '$nom' and password = '$password'");
         if ($result->rowCount()==0){
             echo json_encode('Mauvaises Informations');
         }
