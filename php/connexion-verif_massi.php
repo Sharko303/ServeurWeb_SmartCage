@@ -11,15 +11,18 @@ $password = $obj['password'];
 $type = $obj['type'];
 
 if ($obj['nom']!=""){
-    $result = $bdd->query("SELECT * FROM utilisateurs WHERE nom = '$nom' and password = '$password' an type='$type'");
+    $result = $bdd->query("SELECT * FROM utilisateurs WHERE nom = '$nom' and password = '$password' and type='$type'");
         if ($result->rowCount()==0){
             echo json_encode('Mauvaises Informations');
         }
+
         else{
             echo json_encode('ok');
         }
 }
+
 else{
     echo json_encode('ressayer');
 }
+
 ?>
