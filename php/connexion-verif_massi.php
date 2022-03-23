@@ -23,11 +23,13 @@ if ($obj['nom']!=""){
             if ($type == 'entraineur'){
                 echo json_encode('entraîneur');
             }
+            
             else ($type == 'joueur'){
                 echo json_encode('joueur');
             }
         }
 }
+
 else{
     echo json_encode('ressayer');
 }
