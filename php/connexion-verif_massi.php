@@ -18,11 +18,11 @@ if ($obj['nom']!=""){
         else{
             echo json_encode('ok');
             $userinfo = $result->fetch();
-            $_SESSION['type'] = $userinfo['type'];
-            if($_SESSION['type'] == 'entraineur'){
+            print_r($userinfo);
+            if($userinfo['type'] == 'entraineur'){
                 echo json_encode('entraineur');
             }
-            elseif($_SESSION['type'] == 'joueur'){
+            elseif($userinfo['type'] == 'joueur'){
                 echo json_encode('joueur');
             }
         }
