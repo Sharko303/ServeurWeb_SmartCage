@@ -14,7 +14,13 @@ if ($obj['nom']!=""){
             echo json_encode('Mauvaises Informations');
         }
         else{
-            echo json_encode('ok');
+            $userinfo = $result->fetch();
+            if($userinfo['type'] == 'entraineur'){
+            echo json_encode('entraineur');
+            }
+            else($userinfo['type'] == 'joueur'){
+                echo json_encode('joueur');
+            }
         }
 }
 else{
