@@ -18,6 +18,8 @@ if ($obj['nom']!=""){
         else{
             echo json_encode('ok');
             $userinfo = $result->fetch();
+            echo "résultat " ;
+
             print_r($userinfo);
             if($userinfo['type'] == 'entraineur'){
                 echo json_encode('entraineur');
