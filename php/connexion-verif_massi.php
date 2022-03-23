@@ -9,18 +9,21 @@ $nom = $obj['nom'];
 $password = hash('sha256',$obj['password']); 
 
 if ($obj['nom']!=""){
-    $result = $bdd->query("SELECT * FROM utilisateurs WHERE nom = '$nom' and password = '$password'");
+    $result = $bdd->prepare("SELECT * FROM utilisateurs WHERE nom = '$nom' and password = '$password'");
         if ($result->rowCount()==0){
             echo json_encode('Mauvaises Informations');
         }
         else{
+
             $userinfo = $result->fetch();
+
             if($userinfo['type'] == 'entraineur'){
             echo json_encode('entraineur');
             }
             else($userinfo['type'] == 'joueur'){
                 echo json_encode('joueur');
             }
+
         }
 }
 else{
