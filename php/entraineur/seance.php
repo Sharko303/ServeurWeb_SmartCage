@@ -65,11 +65,17 @@ if ($_SESSION["type"] == 'joueur')
                            status = e.target.classList.contains('active');
 
                        e.target.classList.add(status ? 'inactive' : 'active');
-                       e.target.classList.remove(status ? 'active' : 'inactive'); 
+                       e.target.classList.remove(status ? 'active' : 'inactive');
+
+                       <?php
+ 
+                        $valeur = '<script type="text/javascript">document.write(status);</script>';
+ 
+                    ?>
                     }
             </script>
             <div id="container">
-            <form action="php/creer_seance.php" method="post">
+            <form action="creer_seance.php" method="post">
                 <h1>Nouvelle seance</h1>
                     <b>Nom de l'entraineur :</b>
                 <select name="nom" required>
@@ -92,8 +98,8 @@ if ($_SESSION["type"] == 'joueur')
                     <option value="U15+">U15+</option>
                     </select> <br>
                     <b>Zone de tir :</b>
-                    <div class="btn-group mb-3" role="group" aria-label="Groupe de boutons">
-                <input type="button" id="button" class="inactive" value = "1" style= "color:white; padding-right: 20px; " onclick="setColor(event)"; required />
+                    <div class="cage" role="group" aria-label="Groupe de boutons">
+                <input type="button" id="button" class="inactive" name="btn1" value = "1" style= "color:white; padding-right: 20px; " onclick="setColor(event);this.form.choice.value=this.value;"; required />
                 <input type="button" class="inactive" id="button" value = "2" style= "color:white; padding-right: 20px; " onclick="setColor(event)";/>
                 <input type="button" class="inactive" id="button" value = "3" style= "color:white; padding-right: 20px; " onclick="setColor(event)";/>
                 
@@ -109,6 +115,7 @@ if ($_SESSION["type"] == 'joueur')
                 <input type="submit" id='submit' value='CREER' name="submit">
                     <a class="inscr" href="connexion.php">Ancienne</a>
             </form>
+            
         </div>
         <style>
         body
@@ -190,11 +197,13 @@ if ($_SESSION["type"] == 'joueur')
             }
             .active 
             {
+                
                 background-color: #7FFF00; 
             }
 
             .inactive 
             {
+
                 background-color: #FF0000;
             }
         </style>
