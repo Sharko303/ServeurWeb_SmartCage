@@ -90,7 +90,7 @@ if ($_SESSION["type"] == 'joueur')
                 </select>    <br>
 
                 <label><b>Categorie :</b></label>       
-                    <select name="categorie" class="categorie" required>
+                    <select name="categorie" class="categorie" onchange="this.form.submit()" required>
                     <option value="">aucune</option>
                     <option value="U7">U6/U7</option>
                     <option value="U9">U8/U9</option>
@@ -98,6 +98,12 @@ if ($_SESSION["type"] == 'joueur')
                     <option value="U15+">U15+</option>
                     </select> <br>
                     <b>Zone de tir :</b>
+                    <?php
+                        $categorie = htmlspecialchars('categorie');
+                        echo $categorie;
+                        if ($categorie == 'U15+') 
+                        {
+                            ?>
                     <div class="cage" role="group" aria-label="Groupe de boutons">
                 <input type="button" id="button" class="inactive" name="btn1" value = "1" style= "color:white; padding-right: 20px; " onclick="setColor(event);this.form.choice.value=this.value;"; required />
                 <input type="button" class="inactive" id="button" value = "2" style= "color:white; padding-right: 20px; " onclick="setColor(event)";/>
@@ -115,7 +121,9 @@ if ($_SESSION["type"] == 'joueur')
                 <input type="submit" id='submit' value='CREER' name="submit">
                     <a class="inscr" href="connexion.php">Ancienne</a>
             </form>
-            
+        <?php
+                }
+        ?>
         </div>
         <style>
         body
