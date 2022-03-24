@@ -110,6 +110,9 @@ if ($_SESSION["type"] == 'joueur')
                     <input type="radio" name="categorie" value="U15+" onclick="afficherU15('visible');">U15+
                     </select> <br>
                     <b>Zone de tir :</b>
+
+                    <!-- Affichage de la grande Cage -->
+
                     <div id="grande" style=" visibility:hidden">Grande Cage :
                         <br>
                 <input type="button" id="button" class="inactive" name="btn1" value = "1" style= "color:white; padding-right: 20px; " onclick="setColor(event)";/>
@@ -125,7 +128,9 @@ if ($_SESSION["type"] == 'joueur')
                 <input type="button" class="inactive" id="button" value = "8" style= "color:white; padding-right: 20px; " onclick="setColor(event)";/>
                 <input type="button" class="inactive" id="button" value = "9" style= "color:white; padding-right: 20px; " onclick="setColor(event)";/>
                 </div>
-                
+                    
+                    <!-- Affichage de la moyenne Cage -->
+
                 <div id="moyenne" style=" visibility:hidden">Moyenne  Cage :
                     <br>
                 <input type="button" id="button" class="inactive" name="btn1" value = "1" style= "color:white; padding-right: 20px; " onclick="setColor(event)";/>
@@ -136,6 +141,7 @@ if ($_SESSION["type"] == 'joueur')
                 <input type="button" class="inactive" id="button" value = "5" style= "color:white; padding-right: 20px; " onclick="setColor(event)";/>
                 </div>
 
+                    <!-- Affichage de la petite Cage -->
 
                 <div id="petite" style=" visibility:hidden">Petite Cage :
                     <br>
