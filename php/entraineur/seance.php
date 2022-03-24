@@ -67,11 +67,25 @@ if ($_SESSION["type"] == 'joueur')
                        e.target.classList.add(status ? 'inactive' : 'active');
                        e.target.classList.remove(status ? 'active' : 'inactive');
 
-                       <?php
- 
-                        $valeur = '<script type="text/javascript">document.write(status);</script>';
- 
-                    ?>
+                    }
+                    function afficherU15(etat)
+                    {
+                        document.getElementById("grande").style.visibility=etat;
+                        document.getElementById("moyenne").style.visibility='hidden';
+                        document.getElementById("petite").style.visibility='hidden';
+                    }
+                    function afficherU13(etat)
+                    {
+                        document.getElementById("grande").style.visibility='hidden';
+                        document.getElementById("moyenne").style.visibility=etat;
+                        document.getElementById("petite").style.visibility='hidden';
+                    }
+
+                    function afficherU7(etat)
+                    {
+                        document.getElementById("grande").style.visibility=hidden;
+                        document.getElementById("moyenne").style.visibility=hidden;
+                        document.getElementById("petite").style.visibility=etat;
                     }
             </script>
             <div id="container">
@@ -85,26 +99,19 @@ if ($_SESSION["type"] == 'joueur')
         $liste->_bdd = $bdd;
         $liste->afficherListe();
 ?>
-
+    
 
                 </select>    <br>
 
                 <label><b>Categorie :</b></label>       
-                    <select name="categorie" class="categorie" required>
-                    <option value="">aucune</option>
-                    <option value="U7">U6/U7</option>
-                    <option value="U9">U8/U9</option>
-                    <option value="U13">U10-U13</option>
-                    <option value="U15+">U15+</option>
+                    <input type="radio" name="categorie" value="U7" onclick="afficherU7('visible');">U6/U7
+                    <input type="radio" name="categorie" value="U9"onclick="afficherU13('visible');">U8/U9
+                    <input type="radio" name="categorie" value="U13"onclick="afficherU13('visible');">U10-U13
+                    <input type="radio" name="categorie" value="U15+" onclick="afficherU15('visible');">U15+
                     </select> <br>
                     <b>Zone de tir :</b>
-                    <?php
-                        $categorie = htmlspecialchars($_POST['categorie']);
-                        echo $categorie;
-                        if ($categorie == 'U15+') 
-                        {
-                            ?>
-                    <div class="cage" role="group" aria-label="Groupe de boutons">
+                    <div id="grande" style=" visibility:hidden">Grande Cage :
+                        <br>
                 <input type="button" id="button" class="inactive" name="btn1" value = "1" style= "color:white; padding-right: 20px; " onclick="setColor(event)";/>
                 <input type="button" class="inactive" id="button" value = "2" style= "color:white; padding-right: 20px; " onclick="setColor(event)";/>
                 <input type="button" class="inactive" id="button" value = "3" style= "color:white; padding-right: 20px; " onclick="setColor(event)";/>
@@ -117,14 +124,31 @@ if ($_SESSION["type"] == 'joueur')
                 <input type="button" class="inactive" id="button" value = "7" style= "color:white; padding-right: 20px; " onclick="setColor(event)";/>
                 <input type="button" class="inactive" id="button" value = "8" style= "color:white; padding-right: 20px; " onclick="setColor(event)";/>
                 <input type="button" class="inactive" id="button" value = "9" style= "color:white; padding-right: 20px; " onclick="setColor(event)";/>
+                </div>
+                
+                <div id="moyenne" style=" visibility:hidden">Moyenne  Cage :
+                    <br>
+                <input type="button" id="button" class="inactive" name="btn1" value = "1" style= "color:white; padding-right: 20px; " onclick="setColor(event)";/>
+                <input type="button" class="inactive" id="button" value = "2" style= "color:white; padding-right: 20px; " onclick="setColor(event)";/>
+                
+                <br>
+                <input type="button" class="inactive" id="button" value = "4" style= "color:white; padding-right: 20px; " onclick="setColor(event)";/>
+                <input type="button" class="inactive" id="button" value = "5" style= "color:white; padding-right: 20px; " onclick="setColor(event)";/>
+                </div>
+
+
+                <div id="petite" style=" visibility:hidden">Petite Cage :
+                    <br>
+                <input type="button" class="inactive" id="button" value = "4" style= "color:white; padding-right: 20px; " onclick="setColor(event)";/>
+                <input type="button" class="inactive" id="button" value = "2" style= "color:white; padding-right: 20px; " onclick="setColor(event)";/>
+                
+                </div>
 
                 <input type="submit" id='submit' value='CREER' name="submit">
                     <a class="inscr" href="connexion.php">Ancienne</a>
             </form>
-        <?php
-                }
-        ?>
-        </div>
+        
+        
         <style>
         body
             {
