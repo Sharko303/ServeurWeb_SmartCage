@@ -8,8 +8,6 @@ $nom = $obj['nom'];
 // Populate Password from JSON $obj array and store into $password.
 $password = hash('sha256',$obj['password']);
 
-
-
 if ($obj['nom']!=""){
     $result = $bdd->query("SELECT * FROM utilisateurs WHERE nom = '$nom' and password = '$password'");
         
@@ -26,19 +24,8 @@ if ($obj['nom']!=""){
             }
         }
 }
+
 else{
     echo json_encode('reessayer');
 }
-
-
-/*           $userinfo = $result->fetch();
-            echo "résultat " ;
-
-            print_r($userinfo);
-            if($userinfo['type'] == 'entraineur'){
-                echo json_encode('entraineur');
-            }
-            elseif($userinfo['type'] == 'joueur'){
-                echo json_encode('joueur');
-            } */
 ?>
