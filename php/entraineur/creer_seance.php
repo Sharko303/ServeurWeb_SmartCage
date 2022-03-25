@@ -1,5 +1,6 @@
 <?php
 require_once '../config.php'; // ajout de la base de donnée
+require_once 'Cseance.php'
 
 $nom = htmlspecialchars($_POST['nom']);
 $categorie = htmlspecialchars($_POST['categorie']);
