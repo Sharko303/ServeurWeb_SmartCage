@@ -83,8 +83,8 @@ if ($_SESSION["type"] == 'joueur')
 
                     function afficherU7(etat)
                     {
-                        document.getElementById("grande").style.visibility=hidden;
-                        document.getElementById("moyenne").style.visibility=hidden;
+                        document.getElementById("grande").style.visibility='hidden';
+                        document.getElementById("moyenne").style.visibility='hidden';
                         document.getElementById("petite").style.visibility=etat;
                     }
             </script>
@@ -104,7 +104,7 @@ if ($_SESSION["type"] == 'joueur')
                 </select>    <br>
 
                 <label><b>Categorie :</b></label>       
-                    <input type="radio" name="categorie" value="U7" onclick="afficherU7('visible');">U6/U7
+                    <input type="radio" name="categorie" value="U7"onclick="afficherU7('visible');">U6/U7
                     <input type="radio" name="categorie" value="U9"onclick="afficherU13('visible');">U8/U9
                     <input type="radio" name="categorie" value="U13"onclick="afficherU13('visible');">U10-U13
                     <input type="radio" name="categorie" value="U15+" onclick="afficherU15('visible');">U15+
@@ -115,38 +115,66 @@ if ($_SESSION["type"] == 'joueur')
 
                     <div id="grande" style=" visibility:hidden">Grande Cage :
                         <br>
-                <input type="button" id="button" class="inactive" name="btn1" value = "1" style= "color:white; padding-right: 20px; " onclick="setColor(event)";/>
-                <input type="button" class="inactive" id="button" value = "2" style= "color:white; padding-right: 20px; " onclick="setColor(event)";/>
-                <input type="button" class="inactive" id="button" value = "3" style= "color:white; padding-right: 20px; " onclick="setColor(event)";/>
+                        <br>
+                    <input type="checkbox" name="positions[]" value="1" id="position-1" class="checkbox-button" />
+                    <label for="position-1">Position 1</label>
+                  
+                    <input type="checkbox" name="positions[]" value="1" id="position-2" class="checkbox-button" />
+                    <label for="position-2">Position 2</label>
+                  
+                    <input type="checkbox" name="positions[]" value="1" id="position-3" class="checkbox-button" />
+                    <label for="position-3">Position 3</label>
                 
                 <br>
-                <input type="button" class="inactive" id="button" value = "4" style= "color:white; padding-right: 20px; " onclick="setColor(event)";/>
-                <input type="button" class="inactive" id="button" value = "5" style= "color:white; padding-right: 20px; " onclick="setColor(event)";/>
-                <input type="button" class="inactive" id="button" value = "6" style= "color:white; padding-right: 20px; " onclick="setColor(event)";/>
+                <br>
+                    <input type="checkbox" name="positions[]" value="1" id="position-4" class="checkbox-button" />
+                    <label for="position-4">Position 4</label>
+                  
+                    <input type="checkbox" name="positions[]" value="1" id="position-5" class="checkbox-button" />
+                    <label for="position-5">Position 5</label>
+                  
+                    <input type="checkbox" name="positions[]" value="1" id="position-6" class="checkbox-button" />
+                    <label for="position-6">Position 6</label>
+                <br>
                 <br>    
-                <input type="button" class="inactive" id="button" value = "7" style= "color:white; padding-right: 20px; " onclick="setColor(event)";/>
-                <input type="button" class="inactive" id="button" value = "8" style= "color:white; padding-right: 20px; " onclick="setColor(event)";/>
-                <input type="button" class="inactive" id="button" value = "9" style= "color:white; padding-right: 20px; " onclick="setColor(event)";/>
+                    <input type="checkbox" name="positions[]" value="1" id="position-7" class="checkbox-button" />
+                    <label for="position-7">Position 7</label>
+                  
+                    <input type="checkbox" name="positions[]" value="1" id="position-8" class="checkbox-button" />
+                    <label for="position-8">Position 8</label>
+                  
+                    <input type="checkbox" name="positions[]" value="1" id="position-9" class="checkbox-button" />
+                    <label for="position-9">Position 9</label>
                 </div>
                     
                     <!-- Affichage de la moyenne Cage -->
 
                 <div id="moyenne" style=" visibility:hidden">Moyenne  Cage :
-                    <br>
-                <input type="button" id="button" class="inactive" name="btn1" value = "1" style= "color:white; padding-right: 20px; " onclick="setColor(event)";/>
-                <input type="button" class="inactive" id="button" value = "2" style= "color:white; padding-right: 20px; " onclick="setColor(event)";/>
-                
                 <br>
-                <input type="button" class="inactive" id="button" value = "4" style= "color:white; padding-right: 20px; " onclick="setColor(event)";/>
-                <input type="button" class="inactive" id="button" value = "5" style= "color:white; padding-right: 20px; " onclick="setColor(event)";/>
+                <br>
+                    <input type="checkbox" name="positions[]" value="1" id="position-10" class="checkbox-button" />
+                    <label for="position-10">Position 10</label>
+                  
+                    <input type="checkbox" name="positions[]" value="1" id="position-11" class="checkbox-button" />
+                    <label for="position-11">Position 11</label>
+                <br>
+                <br>
+                <input type="checkbox" name="positions[]" value="1" id="position-12" class="checkbox-button" />
+                    <label for="position-12">Position 12</label>
+                <input type="checkbox" name="positions[]" value="1" id="position-13" class="checkbox-button" />
+                    <label for="position-13">Position 13</label>
                 </div>
 
                     <!-- Affichage de la petite Cage -->
 
                 <div id="petite" style=" visibility:hidden">Petite Cage :
                     <br>
-                <input type="button" class="inactive" id="button" value = "4" style= "color:white; padding-right: 20px; " onclick="setColor(event)";/>
-                <input type="button" class="inactive" id="button" value = "2" style= "color:white; padding-right: 20px; " onclick="setColor(event)";/>
+                    <br>
+                    <input type="checkbox" name="positions[]" value="1" id="position-14" class="checkbox-button" />
+                    <label for="position-14">Position 14</label>
+                  
+                    <input type="checkbox" name="positions[]" value="1" id="position-15" class="checkbox-button" />
+                    <label for="position-15">Position 15</label>
                 
                 </div>
 
@@ -243,6 +271,25 @@ if ($_SESSION["type"] == 'joueur')
             {
 
                 background-color: #FF0000;
+            }
+            .checkbox-button 
+            {
+              display: none;
+              margin-top:100px ;
+            }
+
+            .checkbox-button + label 
+            {
+              padding: 5px;
+              border: solid 1px black;
+              border-radius: 5px;
+              background-color: salmon;
+              margin-top: 100px;
+            }
+
+            .checkbox-button:checked + label 
+            {
+              background-color: lightgreen;
             }
         </style>
         </body>
