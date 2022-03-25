@@ -116,34 +116,34 @@ if ($_SESSION["type"] == 'joueur')
                     <div id="grande" style=" visibility:hidden">Grande Cage :
                         <br>
                         <br>
-                    <input type="checkbox" name="positions[]" value="1" id="position-1" class="checkbox-button" />
+                    <input type="checkbox" name="positions1" value="1" id="position-1" class="checkbox-button" />
                     <label for="position-1">Position 1</label>
                   
-                    <input type="checkbox" name="positions[]" value="1" id="position-2" class="checkbox-button" />
+                    <input type="checkbox" name="positions2" value="1" id="position-2" class="checkbox-button" />
                     <label for="position-2">Position 2</label>
                   
-                    <input type="checkbox" name="positions[]" value="1" id="position-3" class="checkbox-button" />
+                    <input type="checkbox" name="positions3" value="1" id="position-3" class="checkbox-button" />
                     <label for="position-3">Position 3</label>
                 
                 <br>
                 <br>
-                    <input type="checkbox" name="positions[]" value="1" id="position-4" class="checkbox-button" />
+                    <input type="checkbox" name="positions4" value="1" id="position-4" class="checkbox-button" />
                     <label for="position-4">Position 4</label>
                   
-                    <input type="checkbox" name="positions[]" value="1" id="position-5" class="checkbox-button" />
+                    <input type="checkbox" name="positions5" value="1" id="position-5" class="checkbox-button" />
                     <label for="position-5">Position 5</label>
                   
-                    <input type="checkbox" name="positions[]" value="1" id="position-6" class="checkbox-button" />
+                    <input type="checkbox" name="positions6" value="1" id="position-6" class="checkbox-button" />
                     <label for="position-6">Position 6</label>
                 <br>
                 <br>    
-                    <input type="checkbox" name="positions[]" value="1" id="position-7" class="checkbox-button" />
+                    <input type="checkbox" name="positions7" value="1" id="position-7" class="checkbox-button" />
                     <label for="position-7">Position 7</label>
                   
-                    <input type="checkbox" name="positions[]" value="1" id="position-8" class="checkbox-button" />
+                    <input type="checkbox" name="positions8" value="1" id="position-8" class="checkbox-button" />
                     <label for="position-8">Position 8</label>
                   
-                    <input type="checkbox" name="positions[]" value="1" id="position-9" class="checkbox-button" />
+                    <input type="checkbox" name="positions9" value="1" id="position-9" class="checkbox-button" />
                     <label for="position-9">Position 9</label>
                 </div>
                     
@@ -152,16 +152,16 @@ if ($_SESSION["type"] == 'joueur')
                 <div id="moyenne" style=" visibility:hidden">Moyenne  Cage :
                 <br>
                 <br>
-                    <input type="checkbox" name="positions[]" value="1" id="position-10" class="checkbox-button" />
+                    <input type="checkbox" name="positions[10]" value="1" id="position-10" class="checkbox-button" />
                     <label for="position-10">Position 10</label>
                   
-                    <input type="checkbox" name="positions[]" value="1" id="position-11" class="checkbox-button" />
+                    <input type="checkbox" name="positions[11]" value="1" id="position-11" class="checkbox-button" />
                     <label for="position-11">Position 11</label>
                 <br>
                 <br>
-                <input type="checkbox" name="positions[]" value="1" id="position-12" class="checkbox-button" />
+                <input type="checkbox" name="positions[12]" value="1" id="position-12" class="checkbox-button" />
                     <label for="position-12">Position 12</label>
-                <input type="checkbox" name="positions[]" value="1" id="position-13" class="checkbox-button" />
+                <input type="checkbox" name="positions[13]" value="1" id="position-13" class="checkbox-button" />
                     <label for="position-13">Position 13</label>
                 </div>
 
@@ -170,10 +170,10 @@ if ($_SESSION["type"] == 'joueur')
                 <div id="petite" style=" visibility:hidden">Petite Cage :
                     <br>
                     <br>
-                    <input type="checkbox" name="positions[]" value="1" id="position-14" class="checkbox-button" />
+                    <input type="checkbox" name="positions[14]" value="1" id="position-14" class="checkbox-button" />
                     <label for="position-14">Position 14</label>
                   
-                    <input type="checkbox" name="positions[]" value="1" id="position-15" class="checkbox-button" />
+                    <input type="checkbox" name="positions[15]" value="1" id="position-15" class="checkbox-button" />
                     <label for="position-15">Position 15</label>
                 
                 </div>

@@ -37,9 +37,9 @@
                             ));
 
                             // On redirige sur une page avec le message de succès
-                            header('Location:/SmartCage/joueur/index.php?reg_err=success');
+                            header('Location:/ServeurWeb_SmartCage/joueur/index.php?reg_err=success');
                             die();
-                        }else{ header('Location: /SmartCage/inscription.php?reg_err=password'); die();}
-            }else{ header('Location: /SmartCage/inscription.php?reg_err=nom_length'); die();}
-        }else{ header('Location: /SmartCage/inscription.php?reg_err=already'); die();}
+                        }else{ header('Location: /ServeurWeb_SmartCage/inscription.php?reg_err=password'); die();}
+            }else{ header('Location: /ServeurWeb_SmartCage/inscription.php?reg_err=nom_length'); die();}
+        }else{ header('Location: /ServeurWeb_SmartCage/inscription.php?reg_err=already'); die();}
     }
