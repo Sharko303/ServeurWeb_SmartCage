@@ -12,8 +12,10 @@ $password = hash('sha256',$obj['password']);
 
 if ($obj['nom']!=""){
     $result = $bdd->query("SELECT * FROM utilisateurs WHERE nom = '$nom' and password = '$password'");
+        
     if ($result->rowCount()==0){
             echo json_encode('Mauvaises Informations');
+        }
         else{
             $userinfo = $result->fetch();
             if($userinfo['type'] == 'entraineur'){
