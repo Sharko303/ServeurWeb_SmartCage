@@ -1,6 +1,6 @@
 <?php
 // Importing DBConfig.php file.
-include 'config.php';
+include '../config.php';
 $json = file_get_contents('php://input');
 $obj = json_decode($json,true);
 // Populate User nom from JSON $obj array and store into $nom.
