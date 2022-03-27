@@ -14,9 +14,9 @@ class CConnexion
    {
       // On vérifie que les 2 informations sont dans la base de donnée et juste
       $requser = $_bdd->prepare("SELECT * FROM utilisateurs WHERE nom = ? AND password = ?"); // on prend tout ce qu'il y a dans la table de notre utilisateur mot de passe
-      $requser->execute(array($_nom, $_password));
+      $requser->execute(array($_nom, $_password)); // on exécute le tableau de nos variable dans notre base de donnée
       $userexist = $requser->rowCount();
-      // Si elles sont juste alors on entre
+      // Si elles sont juste alors l'utilisateur existe donc on entre dans notre condition
       if($userexist == 1) 
       {
          $userinfo = $requser->fetch();
@@ -40,11 +40,11 @@ class CConnexion
          $erreur = "Mauvais nom ou mot de passe !"; // sinon l'utilisateur n'existe pas
       }
    } else {
-      $erreur = "Erreur"; 
+      $erreur = "Erreur"; // sinon on affecte notre variable erreur
    }
-   if(isset($erreur)) 
+   if(isset($erreur)) // si notre variable erreur n'est pas vide alors
       {
-            header('Location: /SmartCage/connexion.php?login_err=password');
+            header('Location: /SmartCage/connexion.php?login_err=password'); // affiche l'erreur
          }
    }
    function deconnexion()
