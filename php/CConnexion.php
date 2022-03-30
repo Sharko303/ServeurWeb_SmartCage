@@ -44,7 +44,7 @@ class CConnexion
    }
    if(isset($erreur)) // si notre variable erreur n'est pas vide alors
       {
-            header('Location: /SmartCage/connexion.php?login_err=password'); // affiche l'erreur
+            header('Location: /ServeurWeb_SmartCage/connexion.php?login_err=password'); // affiche l'erreur
          }
    }
    function deconnexion()
