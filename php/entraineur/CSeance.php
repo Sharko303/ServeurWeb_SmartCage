@@ -125,7 +125,7 @@ class CSeance
             $row = $check->rowCount();
             if($row == 0)
                 {
-
+                            $_nom = $data['Id_Utilisateur'];
                             $insert = $_bdd->prepare('INSERT INTO seance(entraineur, categorie, nb_essai, date, zone_tir) VALUES(:entraineur, :categorie, :nb_essai, :date, :zone_tir)');
                             $insert->execute(array(
                                 'entraineur' => $_nom,
