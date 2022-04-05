@@ -3,8 +3,6 @@
 include '../config.php';
 $json = file_get_contents('php://input');
 $obj = json_decode($json,true);
-class CConnexion
-{
 // Populate User nom from JSON $obj array and store into $nom.
 $nom = $obj['nom']; 
 // Populate Password from JSON $obj array and store into $password.
@@ -26,9 +24,7 @@ $password = hash('sha256',$obj['password']);
                 }
             }
         }
-
     else{
         echo json_encode('reessayer');
     }
-}
 ?>
