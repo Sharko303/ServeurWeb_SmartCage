@@ -59,15 +59,7 @@ if ($_SESSION["type"] == 'joueur')
                 }
                 ?>
             <script>
-                    function setColor(e) 
-                    {
-                       var target = e.target,
-                           status = e.target.classList.contains('active');
-
-                       e.target.classList.add(status ? 'inactive' : 'active');
-                       e.target.classList.remove(status ? 'active' : 'inactive');
-
-                    }
+                    
                     function afficherU15(etat)
                     {
                         document.getElementById("grande").style.visibility=etat;
@@ -102,7 +94,8 @@ if ($_SESSION["type"] == 'joueur')
     
 
                 </select>    <br>
-
+                <b> Date de la seance </b>
+                <input type="date" name="date" value = "2022-04-05" min="2022-04-05" max="2022-07-10"><br>
                 <label><b>Categorie :</b></label>       
                     <input type="radio" name="categorie" value="U7"onclick="afficherU7('visible');">U6/U7
                     <input type="radio" name="categorie" value="U9"onclick="afficherU13('visible');">U8/U9
@@ -116,35 +109,25 @@ if ($_SESSION["type"] == 'joueur')
                     <div id="grande" style=" visibility:hidden">Grande Cage :
                         <br>
                         <br>
-                    <input type="checkbox" name="positions1" value="1" id="position-1" class="checkbox-button" />
+                    <input type="checkbox" name="1" value="1" id="position-1" class="checkbox-button" />
                     <label for="position-1">Position 1</label>
                   
-                    <input type="checkbox" name="positions2" value="1" id="position-2" class="checkbox-button" />
+                    <input type="checkbox" name="2" value="2" id="position-2" class="checkbox-button" />
                     <label for="position-2">Position 2</label>
                   
-                    <input type="checkbox" name="positions3" value="1" id="position-3" class="checkbox-button" />
+                    <input type="checkbox" name="3" value="3" id="position-3" class="checkbox-button" />
                     <label for="position-3">Position 3</label>
                 
                 <br>
                 <br>
-                    <input type="checkbox" name="positions4" value="1" id="position-4" class="checkbox-button" />
+                    <input type="checkbox" name="4" value="4" id="position-4" class="checkbox-button" />
                     <label for="position-4">Position 4</label>
                   
-                    <input type="checkbox" name="positions5" value="1" id="position-5" class="checkbox-button" />
+                    <input type="checkbox" name="5" value="5" id="position-5" class="checkbox-button" />
                     <label for="position-5">Position 5</label>
                   
-                    <input type="checkbox" name="positions6" value="1" id="position-6" class="checkbox-button" />
+                    <input type="checkbox" name="6" value="6" id="position-6" class="checkbox-button" />
                     <label for="position-6">Position 6</label>
-                <br>
-                <br>    
-                    <input type="checkbox" name="positions7" value="1" id="position-7" class="checkbox-button" />
-                    <label for="position-7">Position 7</label>
-                  
-                    <input type="checkbox" name="positions8" value="1" id="position-8" class="checkbox-button" />
-                    <label for="position-8">Position 8</label>
-                  
-                    <input type="checkbox" name="positions9" value="1" id="position-9" class="checkbox-button" />
-                    <label for="position-9">Position 9</label>
                 </div>
                     
                     <!-- Affichage de la moyenne Cage -->
@@ -152,16 +135,16 @@ if ($_SESSION["type"] == 'joueur')
                 <div id="moyenne" style=" visibility:hidden">Moyenne  Cage :
                 <br>
                 <br>
-                    <input type="checkbox" name="positions[10]" value="1" id="position-10" class="checkbox-button" />
+                    <input type="checkbox" name="10" value="1" id="position-10" class="checkbox-button" />
                     <label for="position-10">Position 10</label>
                   
-                    <input type="checkbox" name="positions[11]" value="1" id="position-11" class="checkbox-button" />
+                    <input type="checkbox" name="11" value="1" id="position-11" class="checkbox-button" />
                     <label for="position-11">Position 11</label>
                 <br>
                 <br>
-                <input type="checkbox" name="positions[12]" value="1" id="position-12" class="checkbox-button" />
+                <input type="checkbox" name="12" value="1" id="position-12" class="checkbox-button" />
                     <label for="position-12">Position 12</label>
-                <input type="checkbox" name="positions[13]" value="1" id="position-13" class="checkbox-button" />
+                <input type="checkbox" name="13" value="1" id="position-13" class="checkbox-button" />
                     <label for="position-13">Position 13</label>
                 </div>
 
@@ -170,10 +153,10 @@ if ($_SESSION["type"] == 'joueur')
                 <div id="petite" style=" visibility:hidden">Petite Cage :
                     <br>
                     <br>
-                    <input type="checkbox" name="positions[14]" value="1" id="position-14" class="checkbox-button" />
+                    <input type="checkbox" name="14" value="1" id="position-14" class="checkbox-button" />
                     <label for="position-14">Position 14</label>
                   
-                    <input type="checkbox" name="positions[15]" value="1" id="position-15" class="checkbox-button" />
+                    <input type="checkbox" name="15" value="1" id="position-15" class="checkbox-button" />
                     <label for="position-15">Position 15</label>
                 
                 </div>

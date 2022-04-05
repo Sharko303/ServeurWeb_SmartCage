@@ -4,34 +4,30 @@ require_once 'Cseance.php';
 
 $nom = htmlspecialchars($_POST['nom']);
 $categorie = htmlspecialchars($_POST['categorie']);
+$date = htmlspecialchars($_POST['date']);
 $seance = new CSeance();
 $seance->_bdd = $bdd;
 $seance->_nom = $nom;
 $seance->_categorie = $categorie;
+$seance->_date = $date;
 if (isset($nom)) 
 {
     if (isset($categorie)) 
     {
         if ($categorie == 'U15+') 
         {
-            $zone1 = $_POST['positions1'];
-            /*$zone2 = $_POST['positions2'];
-            $zone3 = $_POST['positions3'];
-            $zone4 = $_POST['positions4'];
-            $zone5 = $_POST['positions5'];
-            $zone6 = $_POST['positions6'];
-            $zone7 = $_POST['positions7'];
-            $zone8 = $_POST['positions8'];
-            $zone9 = $_POST['positions9'];*/
-            $seance->_zone1 = $zone1;
-            /*$seance->_zone2 = $zone2;
-            $seance->_zone3 = $zone3;
-            $seance->_zone4 = $zone4;
-            $seance->_zone5 = $zone5;
-            $seance->_zone6 = $zone6;
-            $seance->_zone7 = $zone7;
-            $seance->_zone8 = $zone8;
-            $seance->_zone9 = $zone9;*/
+            $zone = array();
+            for ($i=0; $i <= 9 ; $i++) 
+            {
+            
+                if (isset($_POST[$i])) 
+                    {
+                        $zone[$i] = $_POST[$i];
+                        $seance->_zone[$i] = $zone[$i];
+                    }
+
+            }
+            
             $seance->Creer_SeanceU15();
         
         }else if ($categorie == 'U10-U13') 

@@ -90,24 +90,22 @@ class CSeance
     function Creer_SeanceU15()
     {
         $_bdd = $this->_bdd;
-        $_zone1 = $this->_zone1;
         $_nom = $this->_nom;
         $_categorie = $this->_categorie;
         $_nb_essai = 1;        
-        $_date = '1';
-        /*$_zone2 = $this->_zone2;
-
-        $_zone3 = $this->_zone3;
-        $_zone4 = $this->_zone4;
-        $_zone5 = $this->_zone5;
-        $_zone6 = $this->_zone6;
-        $_zone7 = $this->_zone7;
-        $_zone8 = $this->_zone8;
-        $_zone9 = $this->_zone9;*/
+        $_date = $this->_date;
 
         $_zone = array();
-        $_zone[1] = (string)$_zone1;
-
+        for ($i=0; $i <= 9; $i++) 
+        {
+            if (isset($this->_zone[$i]))
+                {
+                    $_zone[$i] = $this->_zone[$i];
+                    echo $_zone[$i];
+                } 
+        }
+        
+        
         for($i=1; $i<=9; $i++)
         {
             if ($_zone[1] == 1) 
