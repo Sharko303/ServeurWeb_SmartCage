@@ -5,9 +5,12 @@ include 'connexion_api.php';
 $json = file_get_contents('php://input');
 $obj = json_decode($json,true);
 
-if($result->rowCount()==1 ){
+if($userexist==1 ){
+    $nom=$userinfo['nom'];
+    $prenom=$userinfo['prenom'];
+    $categorie=$userinfo['categorie'];
 
-    $userinfo['nom'];
-    echo json_encode($userinfo['nom'];);
+    $Response[]=array("nom"=>$nom,"prenom"=>$prenom,"categorie"=>$categorie);
+    echo json_encode($Response);
 }
 ?>

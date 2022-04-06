@@ -11,8 +11,8 @@ $password = hash('sha256',$obj['password']);
     if ($obj['nom']!=""){
             $result = $bdd->prepare("SELECT * FROM utilisateurs WHERE nom = ? and password = ?");
             $result->execute(array($nom, $password));
-        
-        if ($result->rowCount()==0){
+            $userexist = $requser->rowCount();
+        if ($userexist==0){
                 echo json_encode('Mauvaises Informations');
             }
             else{
