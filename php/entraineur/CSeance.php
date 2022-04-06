@@ -108,9 +108,9 @@ class CSeance
         
         for($i=1; $i<=9; $i++)
         {
-            if ($_zone[1] == 1) 
+            if ($_zone[$i] != 0) 
                 {
-                    $zonetir=$_zone[1];
+                    $zonetir=$_zone[$i];
                 }
                 $i++;
         }
