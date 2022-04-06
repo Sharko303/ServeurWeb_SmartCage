@@ -96,25 +96,20 @@ class CSeance
         $_date = $this->_date;
 
         $_zone = array();
-        for ($i=0; $i <= 9; $i++) 
+        for ($i=0; $i <= 6; $i++) 
         {
             if (isset($this->_zone[$i]))
                 {
-                    $_zone[$i] = $this->_zone[$i];
-                    echo $_zone[$i];
+                    $_zone[$i] = $this->_zone[$i]; 
+                    //$zonetir = &_zone;
                 } 
+                //print_r($zonetir) ;
         }
-        
-        
-        for($i=1; $i<=9; $i++)
-        {
-            if ($_zone[1] == 1) 
-                {
-                    $zonetir=$_zone[1];
-                }
-                $i++;
-        }
+        $zonetir = implode(",", $_zone);
+        echo $zonetir;
+       
         $zonetir = (string) $zonetir;
+       
         if (isset($zonetir)) 
         {
             $check = $_bdd->prepare('SELECT entraineur, categorie, nb_essai, date, zone_tir FROM seance WHERE nom = ?');
@@ -126,7 +121,7 @@ class CSeance
                             $_nom = $data['Id_Utilisateur'];
                             $insert = $_bdd->prepare('INSERT INTO seance(entraineur, categorie, nb_essai, date, zone_tir) VALUES(:entraineur, :categorie, :nb_essai, :date, :zone_tir)');
                             $insert->execute(array(
-                                'entraineur' => $_nom,
+                                'entraineur' => 1,
                                 'categorie' => $_categorie,
                                 'nb_essai' => $_nb_essai,
                                 'date' => $_date,
