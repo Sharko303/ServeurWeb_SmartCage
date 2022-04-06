@@ -5,7 +5,7 @@ include 'connexion_api.php';
 $json = file_get_contents('php://input');
 $obj = json_decode($json,true);
 
-if($userexist==1 ){
+if($userexist==1){
     $nom=$userinfo['nom'];
     $prenom=$userinfo['prenom'];
     $categorie=$userinfo['categorie'];
