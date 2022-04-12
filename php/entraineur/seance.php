@@ -104,27 +104,27 @@ if ($_SESSION["type"] == 'joueur')
                     </select> <br>
                     <b>Zone de tir :</b>
 
-                    <!-- Affichage de la grande Cage -->
-
-                    <div id="grande" style=" visibility:hidden">Grande Cage :
+                     <!-- Affichage de la grande Cage -->
+                <div id="cage">
+                    <div id="grande" style=" visibility:hidden; position: absolute;">Grande Cage :
                         <br>
                         <br>
                     <input type="checkbox" name="1" value="1" id="position-1" class="checkbox-button" />
                     <label for="position-1">Position 1</label>
                   
-                    <input type="checkbox" name="2" value="2" id="position-2" class="checkbox-button" />
-                    <label for="position-2">Position 2</label>
-                  
                     <input type="checkbox" name="3" value="3" id="position-3" class="checkbox-button" />
                     <label for="position-3">Position 3</label>
-                
-                <br>
-                <br>
-                    <input type="checkbox" name="4" value="4" id="position-4" class="checkbox-button" />
-                    <label for="position-4">Position 4</label>
                   
                     <input type="checkbox" name="5" value="5" id="position-5" class="checkbox-button" />
                     <label for="position-5">Position 5</label>
+                
+                <br>
+                <br>
+                    <input type="checkbox" name="2" value="2" id="position-2" class="checkbox-button" />
+                    <label for="position-2">Position 2</label>
+                  
+                    <input type="checkbox" name="4" value="4" id="position-4" class="checkbox-button" />
+                    <label for="position-4">Position 4</label>
                   
                     <input type="checkbox" name="6" value="6" id="position-6" class="checkbox-button" />
                     <label for="position-6">Position 6</label>
@@ -132,34 +132,36 @@ if ($_SESSION["type"] == 'joueur')
                     
                     <!-- Affichage de la moyenne Cage -->
 
-                <div id="moyenne" style=" visibility:hidden">Moyenne  Cage :
+                <div id="moyenne" style=" visibility:hidden; float: left; position: absolute;">Moyenne  Cage :
                 <br>
                 <br>
-                    <input type="checkbox" name="10" value="1" id="position-10" class="checkbox-button" />
-                    <label for="position-10">Position 10</label>
+                    <input type="checkbox" name="1" value="1" id="position-11" class="checkbox-button" />
+                    <label for="position-11">Position 1</label>
                   
-                    <input type="checkbox" name="11" value="1" id="position-11" class="checkbox-button" />
-                    <label for="position-11">Position 11</label>
+                    <input type="checkbox" name="3" value="3" id="position-13" class="checkbox-button" />
+                    <label for="position-13">Position 3</label>
                 <br>
                 <br>
-                <input type="checkbox" name="12" value="1" id="position-12" class="checkbox-button" />
-                    <label for="position-12">Position 12</label>
-                <input type="checkbox" name="13" value="1" id="position-13" class="checkbox-button" />
-                    <label for="position-13">Position 13</label>
+                <input type="checkbox" name="2" value="2" id="position-12" class="checkbox-button" />
+                    <label for="position-12">Position 2</label>
+                  
+                    <input type="checkbox" name="4" value="4" id="position-14" class="checkbox-button" />
+                    <label for="position-14">Position 4</label>
                 </div>
 
                     <!-- Affichage de la petite Cage -->
 
-                <div id="petite" style=" visibility:hidden">Petite Cage :
+                <div id="petite" style=" visibility:hidden; float: left; position: absolute">Petite Cage :
                     <br>
                     <br>
-                    <input type="checkbox" name="14" value="1" id="position-14" class="checkbox-button" />
-                    <label for="position-14">Position 14</label>
+                    <input type="checkbox" name="1" value="1" id="position-16" class="checkbox-button" />
+                    <label for="position-16">Position 1</label>
                   
-                    <input type="checkbox" name="15" value="1" id="position-15" class="checkbox-button" />
-                    <label for="position-15">Position 15</label>
+                    <input type="checkbox" name="2" value="1" id="position-17" class="checkbox-button" />
+                    <label for="position-17">Position 2</label>
                 
                 </div>
+            </div>
 
                 <input type="submit" id='submit' value='CREER' name="submit">
                     <a class="inscr" href="connexion.php">Ancienne</a>
@@ -170,6 +172,10 @@ if ($_SESSION["type"] == 'joueur')
         body
             {
                 background-color: grey;
+            }
+            #cage{
+                padding-top: 10px;
+                padding-bottom: 120px;
             }
         #container
             {
@@ -258,7 +264,6 @@ if ($_SESSION["type"] == 'joueur')
             .checkbox-button 
             {
               display: none;
-              margin-top:100px ;
             }
 
             .checkbox-button + label 
