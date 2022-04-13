@@ -33,66 +33,13 @@ class CSeance
             echo $_joueur;
             $liste = new CProgression();
     }
-
-    function afficherGraph($joueur)
-    {
-        $graph = new Graph(900,500);
-
-        // Réprésentation linéaire
-
-        $graph->SetScale("textlin");
-
-        // Fixer les marges
-
-        $graph->img->SetMargin(40,30,50,120);
-
-        // Création du graphique histogramme
-
-        $bplot = new BarPlot($tableauNb);
-
-        // Ajouter les barres au conteneur
-
-        $graph->Add($bplot);
-
-        // Spécification des couleurs des barres
-
-        $bplot->SetFillColor(array('#5EB6DD'));
-
-        // Afficher les valeurs pour chaque barre
-
-        $bplot->value->Show();
-
-        // Modifier le rendu de chaque valeur
-
-        $bplot->value->SetFormat('%d');
-
-        // Le titre
-
-        $graph->title->Set("Inventaire Télédistribution");
-
-        $graph->title->SetFont(FF_ARIAL,FS_BOLD);
-
-        // Taille réduite pour l'axe horizontal(axe x) et vertical (axe y) et mise à 45° des labels
-
-        $graph->xaxis->SetTickLabels($tableauElement);
-
-        $graph->xaxis->SetLabelAngle(45);
-
-        $graph->xaxis->SetFont(FF_ARIAL,FS_BOLD,6);
-
-        $graph->yaxis->SetFont(FF_ARIAL,FS_BOLD,6);
-
-        // Afficher le graphique
-
-        $graph->Stroke();     
-    }
     
     function Creer_SeanceU15()
     {
         $_bdd = $this->_bdd;
         $_nom = $this->_nom;
         $_categorie = $this->_categorie;
-        $_nb_essai = 1;        
+        $_nb_essai = 3;        
         $_date = $this->_date;
 
         $_zone = array();
@@ -105,7 +52,7 @@ class CSeance
                 } 
                 //print_r($zonetir) ;
         }
-        $zonetir = implode(",", $_zone);
+        $zonetir = implode(",", $_zone); // on entre chaque caleur de notre tableau en 1 valeur separer par des virgule ex : tableau(2, 4, 6) = 2,4,6
         echo $zonetir;
        
         $zonetir = (string) $zonetir;

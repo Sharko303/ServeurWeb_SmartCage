@@ -32,14 +32,6 @@ if (isset($nom))
         
         }else if ($categorie == 'U10-U13') 
         {
-            $zone1 = $_POST['positions1'];
-            $zone2 = $_POST['positions2'];
-            $zone3 = $_POST['positions3'];
-            $zone4 = $_POST['positions4'];
-            $seance->_zone1 = $zone1;
-            $seance->_zone2 = $zone2;
-            $seance->_zone3 = $zone3;
-            $seance->_zone4 = $zone4;
             $seance->Creer_SeanceU13();
         }else
         {
