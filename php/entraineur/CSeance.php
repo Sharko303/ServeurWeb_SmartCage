@@ -41,6 +41,7 @@ class CSeance
         $_categorie = $this->_categorie;
         $_nb_essai = 3;        
         $_date = $this->_date;
+        //$id_entraineur = "SELECT Id_Utilisateur FROM utilisateurs WHERE nom = $_nom";
 
         $_zone = array();
         for ($i=0; $i <= 6; $i++) 
@@ -66,14 +67,20 @@ class CSeance
             if($row == 0)
                 {
                             $_nom = $data['Id_Utilisateur'];
-                            $insert = $_bdd->prepare('INSERT INTO seance(entraineur, categorie, nb_essai, date, zone_tir) VALUES(:entraineur, :categorie, :nb_essai, :date, :zone_tir)');
+                            $insert = $_bdd->prepare('INSERT INTO seance(categorie, nb_essai, date, zone_tir) VALUES(:entraineur, :categorie, :nb_essai, :date, :zone_tir)');
                             $insert->execute(array(
-                                'entraineur' => 1,
+                                //'entraineur' => $id_entraineur,
                                 'categorie' => $_categorie,
                                 'nb_essai' => $_nb_essai,
                                 'date' => $_date,
-                                'zone_tir' => $zonetir,
                             ));
+                           /* $insert2 = $_bdd->prepare('INSERT INTO seance_cible(id_seance, id_cible) VALUES(:id_seance, :id_cible)');
+                            $id_seance = 
+                            $insert2->execute(array(
+                                'id_seance' => $id_seance,
+                                'id_cible' => $_cible,
+                            ));*/
+    
                             header('Location:/ServeurWeb_SmartCage/php/entraineur/index-entraineur.php?seance_err=success');
                 } else 
                 {
