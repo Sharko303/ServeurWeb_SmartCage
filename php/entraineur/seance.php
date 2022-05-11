@@ -102,29 +102,43 @@ if ($_SESSION["type"] == 'joueur')
                     <input type="radio" name="categorie" value="U13"onclick="afficherU13('visible');">U10-U13
                     <input type="radio" name="categorie" value="U15+" onclick="afficherU15('visible');">U15+
                     </select> <br>
-                    <b>Zone de tir :</b>
+                    <b>Joueur :</b>
 
                      <!-- Affichage de la grande Cage -->
                 <div id="cage">
-                    <div id="grande" style=" visibility:hidden; position: absolute;">Grande Cage :
+                    <div id="grande" style=" visibility:hidden; position: absolute;">
+                        <div class="liste">
+                            <?php
+                                    $categorie = "U15+";
+                                    $liste = new CSeance();
+                                    $liste->_categorie = $categorie;
+                                    $liste->_bdd = $bdd;
+                                    $liste->afficherJoueur();
+                            ?>
+                        </div>
+                        <br>
+                        <b>Zone de tir :</b>
+                    <br>
+                    <br>
+                        Grande Cage :
                         <br>
                         <br>
                     <input type="checkbox" name="1" value="1" id="position-1" class="checkbox-button" />
                     <label for="position-1">Position 1</label>
                   
-                    <input type="checkbox" name="3" value="3" id="position-3" class="checkbox-button" />
-                    <label for="position-3">Position 3</label>
-                  
-                    <input type="checkbox" name="5" value="5" id="position-5" class="checkbox-button" />
-                    <label for="position-5">Position 5</label>
-                
-                <br>
-                <br>
                     <input type="checkbox" name="2" value="2" id="position-2" class="checkbox-button" />
                     <label for="position-2">Position 2</label>
                   
+                    <input type="checkbox" name="3" value="3" id="position-3" class="checkbox-button" />
+                    <label for="position-3">Position 3</label>
+                
+                <br>
+                <br>
                     <input type="checkbox" name="4" value="4" id="position-4" class="checkbox-button" />
                     <label for="position-4">Position 4</label>
+                  
+                    <input type="checkbox" name="5" value="5" id="position-5" class="checkbox-button" />
+                    <label for="position-5">Position 5</label>
                   
                     <input type="checkbox" name="6" value="6" id="position-6" class="checkbox-button" />
                     <label for="position-6">Position 6</label>
@@ -138,12 +152,12 @@ if ($_SESSION["type"] == 'joueur')
                     <input type="checkbox" name="1" value="1" id="position-11" class="checkbox-button" />
                     <label for="position-11">Position 1</label>
                   
-                    <input type="checkbox" name="3" value="3" id="position-13" class="checkbox-button" />
-                    <label for="position-13">Position 3</label>
-                <br>
-                <br>
-                <input type="checkbox" name="2" value="2" id="position-12" class="checkbox-button" />
+                    <input type="checkbox" name="2" value="2" id="position-12" class="checkbox-button" />
                     <label for="position-12">Position 2</label>
+                <br>
+                <br>
+                <input type="checkbox" name="3" value="3" id="position-13" class="checkbox-button" />
+                    <label for="position-13">Position 3</label>
                   
                     <input type="checkbox" name="4" value="4" id="position-14" class="checkbox-button" />
                     <label for="position-14">Position 4</label>
@@ -157,7 +171,7 @@ if ($_SESSION["type"] == 'joueur')
                     <input type="checkbox" name="1" value="1" id="position-16" class="checkbox-button" />
                     <label for="position-16">Position 1</label>
                   
-                    <input type="checkbox" name="2" value="1" id="position-17" class="checkbox-button" />
+                    <input type="checkbox" name="2" value="2" id="position-17" class="checkbox-button" />
                     <label for="position-17">Position 2</label>
                 
                 </div>
@@ -186,8 +200,10 @@ if ($_SESSION["type"] == 'joueur')
             /* Bordered form */
             form 
             {
+                height: auto;
                 width:100%;
                 padding: 30px;
+                padding-bottom: 0;
                 border: 1px solid #f1f1f1;
                 background: #fff;
                 box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
@@ -220,6 +236,7 @@ if ($_SESSION["type"] == 'joueur')
                 border: none;
                 cursor: pointer;
                 width: 100%;
+                margin-top: 200px;
             }
             input[type=submit]:hover {
                 background-color: white;
@@ -278,6 +295,10 @@ if ($_SESSION["type"] == 'joueur')
             .checkbox-button:checked + label 
             {
               background-color: lightgreen;
+            }
+            .liste
+            {
+                overflow-y: scroll;
             }
         </style>
         </body>

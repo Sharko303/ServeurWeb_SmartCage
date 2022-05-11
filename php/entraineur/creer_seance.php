@@ -14,10 +14,9 @@ if (isset($nom))
 {
     if (isset($categorie)) 
     {
-        if ($categorie == 'U15+') 
-        {
+        
             $zone = array();
-            for ($i=0; $i <= 9 ; $i++) 
+            for ($i=0; $i <= 6 ; $i++) 
             {
             
                 if (isset($_POST[$i])) 
@@ -25,32 +24,22 @@ if (isset($nom))
                         $zone[$i] = $_POST[$i];
                         $seance->_zone[$i] = $zone[$i];
                     }
-
-            }
-            
-            $seance->Creer_SeanceU15();
         
-        }else if ($categorie == 'U10-U13') 
-        {
-            $seance->Creer_SeanceU13();
-        }else
-        {
-            $zone1 = $_POST['positions1'];
-            $zone2 = $_POST['positions2'];
-            $seance->_zone1 = $zone1;
-            $seance->_zone2 = $zone2;
-            $seance->Creer_SeanceU6();
-        }
+            }
+          
+        $seance->Creer_Seance();
+        $limit = 'SELECT COUNT(*) FROM utilisateurs WHERE categorie = "'.$categorie.'"';
+            $seance->_limit = $limit;
+             for ($i=7; $i <= $limit ; $i++) 
+            {
+                if (isset($_POST[$i]))
+                {
+                            $joueur[$i] = $_POST[$i];
+                            $seance->_joueur[$i] = $joueur[$i];
+                            $i++;
+                }
+            }
+            $seance->Participer();
     }
 }
-/*if(isset($_POST['positions1']))
-{
-    $zone1 = $_POST['positions1'];
-    echo $zone1;
-}
-$seance = new CSeance();
-
-
-echo $nom;
-echo $categorie;*/
 ?>

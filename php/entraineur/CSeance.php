@@ -6,15 +6,17 @@
  * 
  */
 require_once '../config.php';
-require_once ('jpgraph/src/jpgraph.php');
-require_once ('jpgraph/src/jpgraph_line.php');
-
 class CSeance
 {
     private $_joueur;
     private $_identifiant;
+    public $_id_seance;
 
-    function afficherListe()
+/*function __construct()
+{
+    $this->_id_seance = $_id_seance;
+}*/
+    public function afficherListe()
         {
             $_bdd = $this->_bdd;
             $sql = "SELECT nom FROM utilisateurs WHERE type = 'entraineur'";
@@ -26,15 +28,24 @@ class CSeance
                 echo "<OPTION VALUE=\"$nomselect\">".$nomselect.'</option>';
             } 
         }
-
-    function afficherJoueur()
-    {
-            $_joueur = htmlspecialchars($_POST['nom']);
-            echo $_joueur;
-            $liste = new CProgression();
-    }
+        public function afficherJoueur()
+        {
+            $_bdd = $this->_bdd;
+            $_categorie = $this->_categorie;
+            $sql = 'SELECT nom FROM utilisateurs WHERE categorie = "'.$_categorie.'"';
+            //$liste = $bdd->query($sql) as $bdd);
+            $liste = $_bdd->query($sql);
+            $i = 6;
+            while ($donnees = $liste->fetch())
+            {
+                $nomselect = $donnees['nom'];
+                echo "<br><INPUT TYPE=checkbox NAME=\"$i\" VALUE=\"$nomselect\">".$nomselect.'</option>';
+                $i++;
+                echo $i;
+            } 
+        }
     
-    function Creer_SeanceU15()
+    public function Creer_Seance()
     {
         $_bdd = $this->_bdd;
         $_nom = $this->_nom;
@@ -53,9 +64,8 @@ class CSeance
                 } 
                 //print_r($zonetir) ;
         }
+        
         $zonetir = implode(",", $_zone); // on entre chaque caleur de notre tableau en 1 valeur separer par des virgule ex : tableau(2, 4, 6) = 2,4,6
-        echo $zonetir;
-       
         $zonetir = (string) $zonetir;
        
         if (isset($zonetir)) 
@@ -66,95 +76,66 @@ class CSeance
             $row = $check->rowCount();
             if($row == 0)
                 {
-                            $_nom = $data['Id_Utilisateur'];
-                            $insert = $_bdd->prepare('INSERT INTO seance(categorie, nb_essai, date, zone_tir) VALUES(:entraineur, :categorie, :nb_essai, :date, :zone_tir)');
+                            //$_nom = $data['Id_Utilisateur'];
+                            $insert = $_bdd->prepare('INSERT INTO seance(entraineur, categorie, nb_essai, date) VALUES( :entraineur, :categorie, :nb_essai, :date)');
                             $insert->execute(array(
-                                //'entraineur' => $id_entraineur,
+                                'entraineur' => $_nom,
                                 'categorie' => $_categorie,
                                 'nb_essai' => $_nb_essai,
                                 'date' => $_date,
                             ));
-                           /* $insert2 = $_bdd->prepare('INSERT INTO seance_cible(id_seance, id_cible) VALUES(:id_seance, :id_cible)');
-                            $id_seance = 
-                            $insert2->execute(array(
-                                'id_seance' => $id_seance,
-                                'id_cible' => $_cible,
-                            ));*/
-    
-                            header('Location:/ServeurWeb_SmartCage/php/entraineur/index-entraineur.php?seance_err=success');
+                            $id_seance = $_bdd->lastInsertId();// on recruperer le dernier id que nous avons crée
+                            $this->_id_seance = $id_seance;
+                            $insert2 = $_bdd->prepare('INSERT INTO seance_cible(id_seance, id_cible) VALUES(:id_seance, :id_cible)');
+                            for ($i=0; $i <= 6; $i++) 
+                                {
+                                    if (isset($_zone[$i]))
+                                        {
+                                            $insert2->execute(array(
+                                            'id_seance' => $id_seance,
+                                            'id_cible' => $_zone[$i],
+                                            ));
+                                        }
+                                }
                 } else 
                 {
                     header('Location:/ServeurWeb_SmartCage/php/entraineur/seance.php?seance_err=erreur');
                 }
+                
             }
         }
-    /*function Creer_SeanceU13()
-    {
-        $i = 1;
-        $_zonetir = '';
-        $btn1= 'bouton1';
-        $btn2= 'bouton2';
-        $btn3= 'bouton3';
-        $btn4= 'bouton4';
+        public function Participer()
+            {
+                $_limit = $this->_limit;
+                $_bdd = $this->_bdd;
+                $_joueur = array();
+                $id_seance = $this->_id_seance;
+                echo $_limit;
+                for ($i=7; $i <= $_limit; $i++) 
+                    {
+                        if (isset($this->_joueur[$i]))
+                            {
+                                $_joueur[$i] = $this->_joueur[$i]; 
+                                echo $_joueur[$i];
+                            }
+                    }
 
-        while ($i <= 4, i++)
-        {
-            if (isset($btn$i)) 
-                {
-                    $_zonetir=$_zonetir','$btn$i;
-                    $i++;
-                }
-        }
-        if (isset($zonetir)) 
-        {
-            $check = $bdd->prepare('SELECT nom, categorie, zone_tir FROM seance WHERE nom = ?');
-            $check->execute(array($nom));
-            $data = $check->fetch();
-            $row = $check->rowCount();
-            if($row == 0)
-                {
-                    // On insère dans la base de données les informations de la seance
-                            $insert = $bdd->prepare('INSERT INTO seance(nom, categorie, zone_tir) VALUES(:nom, :categorie, :zone_tir)');
-                            $insert->execute(array(
-                                'nom' => $nom,
-                                'categorie' => $categorie,
-                                   'zone_tir' => $zone_tir,
-                            ));
-                }
+                    
+                            echo $id_seance;
+                            /*$insert2 = $_bdd->prepare('INSERT INTO participe(id_seance, id_cible, score) VALUES(:id_seance, :id_cible, :score)');
+                            for ($i=0; $i <= $_limit; $i++) 
+                                {
+                                    if (isset($_joueur[$i]))
+                                        {
+                                            $id_joueur = 'SELECT Id_Utilisateur FROM utilisateurs WHERE nom = "'.$_joueur[$i].'"';
+                                            $insert2->execute(array(
+                                            'Id_Utilisateur' => $id_joueur,
+                                            'id_seance' => $id_seance,
+                                            'score' => 0,
+                                            ));
+                                        }
+                                }
+                                header('Location:/ServeurWeb_SmartCage/php/entraineur/index-entraineur.php?seance_err=success');*/
             }
-        }
-    function Creer_SeanceU6()
-    {
-        $i = 1;
-        $_zonetir = '';
-        $btn1= 'bouton1';
-        $btn2= 'bouton2';
-
-        while ($i <= 2, i++)
-        {
-            if (isset($btn$i)) 
-                {
-                    $_zonetir=$_zonetir','$btn$i;
-                    $i++;
-                }
-        }
-        if (isset($zonetir)) 
-        {
-            $check = $bdd->prepare('SELECT nom, categorie, zone_tir FROM seance WHERE nom = ?');
-            $check->execute(array($nom));
-            $data = $check->fetch();
-            $row = $check->rowCount();
-            if($row == 0)
-                {
-                    // On insère dans la base de données les informations de la seance
-                            $insert = $bdd->prepare('INSERT INTO seance(nom, categorie, zone_tir) VALUES(:nom, :categorie, :zone_tir)');
-                            $insert->execute(array(
-                                'nom' => $nom,
-                                'categorie' => $categorie,
-                                   'zone_tir' => $zone_tir,
-                            ));
-                }
-            }
-        }*/   
     }
 ?>
