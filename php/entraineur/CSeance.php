@@ -8,7 +8,6 @@
 require_once '../config.php';
 class CSeance
 {
-    private $_joueur;
     private $_identifiant;
     public $_id_seance;
 
@@ -35,13 +34,13 @@ class CSeance
             $sql = 'SELECT nom FROM utilisateurs WHERE categorie = "'.$_categorie.'"';
             //$liste = $bdd->query($sql) as $bdd);
             $liste = $_bdd->query($sql);
-            $i = 6;
+            $i = 7;
             while ($donnees = $liste->fetch())
             {
                 $nomselect = $donnees['nom'];
-                echo "<br><INPUT TYPE=checkbox NAME=\"$i\" VALUE=\"$nomselect\">".$nomselect.'</option>';
+                echo "<br><INPUT TYPE=checkbox NAME=\"$i\" VALUE=\"$nomselect\">".$nomselect,$i.'</option>';
                 $i++;
-                echo $i;
+                
             } 
         }
     
@@ -110,32 +109,34 @@ class CSeance
                 $_bdd = $this->_bdd;
                 $_joueur = array();
                 $id_seance = $this->_id_seance;
-                echo $_limit;
+                
                 for ($i=7; $i <= $_limit; $i++) 
                     {
                         if (isset($this->_joueur[$i]))
                             {
-                                $_joueur[$i] = $this->_joueur[$i]; 
+                                $_joueur[$i] = $this->_joueur[$i];
+                                $id_joueur[$i] = 'SELECT Id_Utilisateur FROM utilisateurs WHERE nom ="'.$_joueur[$i].'"';
                                 echo $_joueur[$i];
                             }
                     }
 
                     
-                            echo $id_seance;
-                            /*$insert2 = $_bdd->prepare('INSERT INTO participe(id_seance, id_cible, score) VALUES(:id_seance, :id_cible, :score)');
-                            for ($i=0; $i <= $_limit; $i++) 
+                            
+                            
+                            $insert2 = $_bdd->prepare('INSERT INTO participe(id_utilisateur, id_seance, score) VALUES(:id_utilisateur, :id_seance, :score)');
+                            for ($i=7; $i <= $_limit; $i++) 
                                 {
                                     if (isset($_joueur[$i]))
                                         {
-                                            $id_joueur = 'SELECT Id_Utilisateur FROM utilisateurs WHERE nom = "'.$_joueur[$i].'"';
+                                            //$id_joueur = 'SELECT Id_Utilisateur FROM utilisateurs WHERE nom = "'.$_joueur[$i].'"';
                                             $insert2->execute(array(
-                                            'Id_Utilisateur' => $id_joueur,
+                                            'id_utilisateur' => $id_joueur[$i],
                                             'id_seance' => $id_seance,
                                             'score' => 0,
                                             ));
                                         }
                                 }
-                                header('Location:/ServeurWeb_SmartCage/php/entraineur/index-entraineur.php?seance_err=success');*/
+                                header('Location:/ServeurWeb_SmartCage/php/entraineur/index-entraineur.php?seance_err=success');
             }
     }
 ?>

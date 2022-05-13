@@ -28,17 +28,22 @@ if (isset($nom))
             }
           
         $seance->Creer_Seance();
-        $limit = 'SELECT COUNT(*) FROM utilisateurs WHERE categorie = "'.$categorie.'"';
+        $limitest = 'SELECT count(*) FROM utilisateurs WHERE categorie = "'.$categorie.'"';
+        $query = $bdd->query($limitest);
+        $limit = $query->fetchColumn();
+        
             $seance->_limit = $limit;
+            $limit = $limit + 7;
              for ($i=7; $i <= $limit ; $i++) 
             {
                 if (isset($_POST[$i]))
                 {
                             $joueur[$i] = $_POST[$i];
                             $seance->_joueur[$i] = $joueur[$i];
-                            $i++;
                 }
+                
             }
+            $seance->_limit = $limit;
             $seance->Participer();
     }
 }
