@@ -64,6 +64,7 @@ if ($_SESSION["type"] == 'joueur')
                     {
                         document.getElementById("grande").style.visibility=etat;
                         document.getElementById("moyenne").style.visibility='hidden';
+                        document.getElementById("moyenne2").style.visibility='hidden';
                         document.getElementById("petite").style.visibility='hidden';
                     }
                     function afficherU13(etat)
@@ -85,6 +86,7 @@ if ($_SESSION["type"] == 'joueur')
                     {
                         document.getElementById("grande").style.visibility='hidden';
                         document.getElementById("moyenne").style.visibility='hidden';
+                        document.getElementById("moyenne2").style.visibility='hidden';
                         document.getElementById("petite").style.visibility=etat;
                     }
             </script>
@@ -213,7 +215,17 @@ if ($_SESSION["type"] == 'joueur')
 
                     <!-- Affichage de la petite Cage -->
 
-                <div id="petite" style=" visibility:hidden; float: left; position: absolute">Petite Cage :
+                <div id="petite" style=" visibility:hidden; float: left; position: absolute">
+                    <div class="liste">
+                            <?php
+                                    $categorie = "U7";
+                                    $liste = new CSeance();
+                                    $liste->_categorie = $categorie;
+                                    $liste->_bdd = $bdd;
+                                    $liste->afficherJoueur();
+                            ?>
+                        </div>
+                    Petite Cage :
                     <br>
                     <br>
                     <input type="checkbox" name="1" value="1" id="position-16" class="checkbox-button" />
