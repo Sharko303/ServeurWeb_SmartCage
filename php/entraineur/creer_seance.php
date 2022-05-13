@@ -10,6 +10,21 @@ $seance->_bdd = $bdd;
 $seance->_nom = $nom;
 $seance->_categorie = $categorie;
 $seance->_date = $date;
+$limitest = 'SELECT count(*) FROM utilisateurs WHERE categorie = "'.$categorie.'"';
+$query = $bdd->query($limitest);
+$limit = $query->fetchColumn();
+$seance->_limit = $limit;
+$limit = $limit + 7;
+$joueur_valide = 0;
+for ($i=7; $i < $limit; $i++) 
+    { 
+        if (isset($_GET[$i])) 
+        {
+            $joueur_valide=1;
+        }
+    }
+if ($joueur_valide==0) 
+{
 if (isset($nom)) 
 {
     if (isset($categorie)) 
@@ -28,12 +43,7 @@ if (isset($nom))
             }
           
         $seance->Creer_Seance();
-        $limitest = 'SELECT count(*) FROM utilisateurs WHERE categorie = "'.$categorie.'"';
-        $query = $bdd->query($limitest);
-        $limit = $query->fetchColumn();
         
-            $seance->_limit = $limit;
-            $limit = $limit + 7;
              for ($i=7; $i <= $limit ; $i++) 
             {
                 if (isset($_POST[$i]))
@@ -46,5 +56,10 @@ if (isset($nom))
             $seance->_limit = $limit;
             $seance->Participer();
     }
-}
+ }
+}else
+
+    {
+       header('Location: seance.php?joueur_err=aucun');
+    }
 ?>

@@ -38,7 +38,7 @@ class CSeance
             while ($donnees = $liste->fetch())
             {
                 $nomselect = $donnees['nom'];
-                echo "<br><INPUT TYPE=checkbox NAME=\"$i\" VALUE=\"$nomselect\">".$nomselect,$i.'</option>';
+                echo "<br><INPUT TYPE=checkbox NAME=\"$i\" VALUE=\"$nomselect\">".$nomselect.'</option>';
                 $i++;
                 
             } 
@@ -118,7 +118,7 @@ class CSeance
                                 $req_id_joueur[$i] = 'SELECT Id_Utilisateur FROM utilisateurs WHERE nom ="'.$_joueur[$i].'"';
                                 $rep_id_joueur[$i]=$_bdd->query($req_id_joueur[$i]);
                                 $id_joueur[$i]=$rep_id_joueur[$i]->fetch();
-                                print_r($id_joueur[$i][0]);
+                                //print_r($id_joueur[$i][0]);
                                 
                             }
                     }

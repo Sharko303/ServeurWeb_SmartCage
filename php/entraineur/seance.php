@@ -20,41 +20,20 @@ if ($_SESSION["type"] == 'joueur')
         <body>
         <div class="login-form">
             <?php 
-                if(isset($_GET['reg_err']))
+                if(isset($_GET['joueur_err']))
                 {
-                    $err = htmlspecialchars($_GET['reg_err']);
+                    $err = htmlspecialchars($_GET['joueur_err']);
 
                     switch($err)
                     {
-                        case 'success':
+                        case 'aucun':
                         ?>
                             <div class="alert">
-                                <strong>Succès</strong> inscription réussie !
+                                <strong>Erreur</strong> aucun joueur sélectionné !
                             </div>
                         <?php
                         break;
-
-                        case 'password':
-                        ?>
-                            <div class="alert">
-                                <strong>Erreur</strong> mot de passe différent
-                            </div>
-                        <?php
-                        break;
-
-                        case 'pseudo_length':
-                        ?>
-                            <div class="alert">
-                                <strong>Erreur</strong> pseudo trop long
-                            </div>
-                        <?php 
-                        case 'already':
-                        ?>
-                            <div class="alert">
-                                <strong>Erreur</strong> compte deja existant
-                            </div>
-                        <?php 
-
+                            
                     }
                 }
                 ?>
