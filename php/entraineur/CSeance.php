@@ -115,8 +115,11 @@ class CSeance
                         if (isset($this->_joueur[$i]))
                             {
                                 $_joueur[$i] = $this->_joueur[$i];
-                                $id_joueur[$i] = 'SELECT Id_Utilisateur FROM utilisateurs WHERE nom ="'.$_joueur[$i].'"';
-                                echo $_joueur[$i];
+                                $req_id_joueur[$i] = 'SELECT Id_Utilisateur FROM utilisateurs WHERE nom ="'.$_joueur[$i].'"';
+                                $rep_id_joueur[$i]=$_bdd->query($req_id_joueur[$i]);
+                                $id_joueur[$i]=$rep_id_joueur[$i]->fetch();
+                                print_r($id_joueur[$i][0]);
+                                
                             }
                     }
 
@@ -130,7 +133,7 @@ class CSeance
                                         {
                                             //$id_joueur = 'SELECT Id_Utilisateur FROM utilisateurs WHERE nom = "'.$_joueur[$i].'"';
                                             $insert2->execute(array(
-                                            'id_utilisateur' => $id_joueur[$i],
+                                            'id_utilisateur' => $id_joueur[$i][0],
                                             'id_seance' => $id_seance,
                                             'score' => 0,
                                             ));

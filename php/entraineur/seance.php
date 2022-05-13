@@ -70,6 +70,14 @@ if ($_SESSION["type"] == 'joueur')
                     {
                         document.getElementById("grande").style.visibility='hidden';
                         document.getElementById("moyenne").style.visibility=etat;
+                        document.getElementById("moyenne2").style.visibility='hidden';
+                        document.getElementById("petite").style.visibility='hidden';
+                    }
+                    function afficherU9(etat)
+                    {
+                        document.getElementById("grande").style.visibility='hidden';
+                        document.getElementById("moyenne").style.visibility='hidden';
+                        document.getElementById("moyenne2").style.visibility=etat;
                         document.getElementById("petite").style.visibility='hidden';
                     }
 
@@ -98,7 +106,7 @@ if ($_SESSION["type"] == 'joueur')
                 <input type="date" name="date" value = "2022-04-05" min="2022-04-05" max="2022-07-10"><br>
                 <label><b>Categorie :</b></label>       
                     <input type="radio" name="categorie" value="U7"onclick="afficherU7('visible');">U6/U7
-                    <input type="radio" name="categorie" value="U9"onclick="afficherU13('visible');">U8/U9
+                    <input type="radio" name="categorie" value="U9"onclick="afficherU9('visible');">U8/U9
                     <input type="radio" name="categorie" value="U13"onclick="afficherU13('visible');">U10-U13
                     <input type="radio" name="categorie" value="U15+" onclick="afficherU15('visible');">U15+
                     </select> <br>
@@ -146,7 +154,17 @@ if ($_SESSION["type"] == 'joueur')
                     
                     <!-- Affichage de la moyenne Cage -->
 
-                <div id="moyenne" style=" visibility:hidden; float: left; position: absolute;">Moyenne  Cage :
+                <div id="moyenne" style=" visibility:hidden; float: left; position: absolute;">
+                    <div class="liste">
+                            <?php
+                               $categorie = "U13";
+                                    $liste = new CSeance();
+                                    $liste->_categorie = $categorie;
+                                    $liste->_bdd = $bdd;
+                                    $liste->afficherJoueur();
+                            ?>
+                        </div>
+                    Moyenne  Cage :
                 <br>
                 <br>
                     <input type="checkbox" name="1" value="1" id="position-11" class="checkbox-button" />
@@ -162,6 +180,36 @@ if ($_SESSION["type"] == 'joueur')
                     <input type="checkbox" name="4" value="4" id="position-14" class="checkbox-button" />
                     <label for="position-14">Position 4</label>
                 </div>
+                <!-- Affichage de la moyenne Cage -->
+
+                <div id="moyenne2" style=" visibility:hidden; float: left; position: absolute;">
+                    <div class="liste">
+                            <?php
+
+                                    $categorie = "U9";
+                                    $liste = new CSeance();
+                                    $liste->_categorie = $categorie;
+                                    $liste->_bdd = $bdd;
+                                    $liste->afficherJoueur();
+                            ?>
+                        </div>
+                    Moyenne  Cage :
+                <br>
+                <br>
+                    <input type="checkbox" name="1" value="1" id="position-11" class="checkbox-button" />
+                    <label for="position-11">Position 1</label>
+                  
+                    <input type="checkbox" name="2" value="2" id="position-12" class="checkbox-button" />
+                    <label for="position-12">Position 2</label>
+                <br>
+                <br>
+                <input type="checkbox" name="3" value="3" id="position-13" class="checkbox-button" />
+                    <label for="position-13">Position 3</label>
+                  
+                    <input type="checkbox" name="4" value="4" id="position-14" class="checkbox-button" />
+                    <label for="position-14">Position 4</label>
+                </div>
+
 
                     <!-- Affichage de la petite Cage -->
 
