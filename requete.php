@@ -1,5 +1,5 @@
 <?php
-require_once 'php/config.php';
+require_once ('php/config.php');
 require_once ('jpgraph-4.4.0/src/jpgraph.php');
 require_once ('jpgraph-4.4.0/src/jpgraph_line.php');
 
@@ -10,13 +10,13 @@ require_once ('jpgraph-4.4.0/src/jpgraph_line.php');
 
         // On recupere d'abord l'id du joueur selectionné
         $req_id_joueur = 'SELECT Id_Utilisateur FROM utilisateurs WHERE nom ="'.$_joueur.'"'; // requete sql pour selectionné l'id du joueur
-        $rep_id_joueur=$bdd->query($req_id_joueur); // On récupére la reponse
+        $rep_id_joueur=$_bdd->query($req_id_joueur); // On récupére la reponse
         $id_joueur=$rep_id_joueur->fetch(); 
         //print_r($id_joueur[0]);
 
         // On va désormais chercher l'id des seance ou a participé notre joueur selectionné
         $req_id_seance = 'SELECT id_seance FROM participe WHERE id_utilisateur ="'.$id_joueur[0].'"'; //
-        $rep_id_seance=$bdd->query($req_id_seance); // On récupére la reponse
+        $rep_id_seance=$_bdd->query($req_id_seance); // On récupére la reponse
         $id_seance = array();
         // tant que nous avons une reponse nous continuons :
         while (false != ($result=$rep_id_seance->fetch())) 
@@ -33,33 +33,16 @@ require_once ('jpgraph-4.4.0/src/jpgraph_line.php');
         }
 
         $date = array();
-        $_date = array();
         for ($i=0; $i < $nb_seance; $i++) 
         { 
             $req_date[$i] = 'SELECT date FROM seance WHERE id_seance ="'.$id_seance[$i].'"';
-            $rep_date[$i]=$bdd->query($req_date[$i]);
+            $rep_date[$i]=$_bdd->query($req_date[$i]);
             $date[$i]=$rep_date[$i]->fetch();
-            $_date[$i] = $date[$i][0]; // on rend notre tableau en tableau normal et non pas en 2 dimension
             //print_r($date[$i][0]);
         }
-        $score = array();
-        $_score = array();
-        // On va désormais chercher l'id des seance ou a participé notre joueur selectionné
-        $req_score = 'SELECT score FROM participe WHERE id_utilisateur ="'.$id_joueur[0].'"'; //
-        $rep_score=$bdd->query($req_score); // On récupére la reponse
-        
-        // tant que nous avons une reponse nous continuons :
-        while (false != ($result=$rep_score->fetch())) 
-        {
-            $score[] = $result['score'];
-        }
 
-        if (empty($score)) 
-        {
-            $score = array(0,0);
-            $date = array(0,0);
-        }
-        $datay1 = $score;
+
+        $datay1 = array(0,3,3,0);
 
         // Setup the graph
         $graph = new Graph(400,350);
@@ -82,18 +65,17 @@ require_once ('jpgraph-4.4.0/src/jpgraph_line.php');
 
         $graph->xgrid->Show();
         $graph->xgrid->SetLineStyle("solid");
-        $graph->xaxis->SetTickLabels($_date);
+        $graph->xaxis->SetTickLabels($date);
         $graph->xgrid->SetColor('#E3E3E3');
 
         // Create the first line
         $p1 = new LinePlot($datay1);
         $graph->Add($p1);
         $p1->SetColor("#6495ED");
-        $p1->SetLegend('Score');
+        $p1->SetLegend('Tir');
 
         $graph->legend->SetFrameWeight(1);
 
         // Output line
         $graph->Stroke();
-
 ?>
