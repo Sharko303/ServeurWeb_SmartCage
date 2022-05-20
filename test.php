@@ -59,6 +59,10 @@ require_once ('jpgraph-4.4.0/src/jpgraph_line.php');
             $score = array(0,0);
             $date = array(0,0);
         }
+        if ($nb_seance < 2) 
+        {
+            $score = array($score[0],0);
+        }
         $datay1 = $score;
 
         // Setup the graph
@@ -84,6 +88,7 @@ require_once ('jpgraph-4.4.0/src/jpgraph_line.php');
         $graph->xgrid->SetLineStyle("solid");
         $graph->xaxis->SetTickLabels($_date);
         $graph->xgrid->SetColor('#E3E3E3');
+        $graph->xaxis->SetLabelAngle(90);
 
         // Create the first line
         $p1 = new LinePlot($datay1);

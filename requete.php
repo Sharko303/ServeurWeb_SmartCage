@@ -65,7 +65,7 @@ require_once ('jpgraph-4.4.0/src/jpgraph_line.php');
 
         $graph->xgrid->Show();
         $graph->xgrid->SetLineStyle("solid");
-        $graph->xaxis->SetTickLabels($date);
+        $graph->xaxis->SetTickLabels(array('A','B','C','D'));
         $graph->xgrid->SetColor('#E3E3E3');
 
         // Create the first line
