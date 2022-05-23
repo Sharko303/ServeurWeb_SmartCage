@@ -73,10 +73,10 @@
     </div>
         <form class="deroulant" action="progression.php" method="post">
             <label><b>Categorie :</b></label>       
-                    <input type="radio" name="categorie" id="U7" value="U7"onclick="afficherU7('visible');">;>U6/U7 
-                    <input type="radio" name="categorie" id="U9" value="U9"onclick="afficherU9('visible');">>U8/U9
-                    <input type="radio" name="categorie" id="U13" value="U13"onclick="afficherU13('visible');">>U10-U13
-                    <input type="radio" name="categorie" id="U15+" value="U15+"onclick="afficherU15('visible');">>U15+
+                    <input type="radio" name="categorie" id="U7" value="U7"onclick="afficherU7('visible');">U6/U7 
+                    <input type="radio" name="categorie" id="U9" value="U9"onclick="afficherU9('visible');">U8/U9
+                    <input type="radio" name="categorie" id="U13" value="U13"onclick="afficherU13('visible');">U10-U13
+                    <input type="radio" name="categorie" id="U15+" value="U15+"onclick="afficherU15('visible');">U15+
                     </select> <br>
    Nom du joueur :
    <div id="U15" style=" visibility:hidden; position: absolute;">
