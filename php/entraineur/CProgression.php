@@ -31,6 +31,22 @@ class CProgression
                 echo "<OPTION VALUE=\"$nomselect\">".$nomselect.'</option>';
             } 
         }
+        public function Joueur()
+        {
+            $_bdd = $this->_bdd;
+            $_categorie = $this->_categorie;
+            $sql = 'SELECT nom FROM utilisateurs WHERE categorie = "'.$_categorie.'"';
+            //$liste = $bdd->query($sql) as $bdd);
+            $liste = $_bdd->query($sql);
+            $i = 7;
+            while ($donnees = $liste->fetch())
+            {
+                $nomselect = $donnees['nom'];
+                echo "<br><OPTION VALUE=\"$nomselect\">".$nomselect.'</option>';
+                $i++;
+                
+            } 
+        }
 
     function afficherJoueur()
     {

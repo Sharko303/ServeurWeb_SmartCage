@@ -42,13 +42,22 @@
         </nav>
     </div>
         <form class="deroulant" action="progression.php" method="post">
+            <label><b>Categorie :</b></label>       
+                    <input type="radio" name="categorie" id="U7" value="U7";>U6/U7 
+                    <input type="radio" name="categorie" id="U9" value="U9">U8/U9
+                    <input type="radio" name="categorie" id="U13" value="U13">U10-U13
+                    <input type="radio" name="categorie" id="U15+" value="U15+">U15+
+                    </select> <br>
    Nom du joueur :
    <select name="nom" >
       <option value=0>Choisir
 <?php
+        $doc = new DomDocument;
+        $categorie = $doc->getElementByID('U7');
         $liste = new CProgression();
+        $liste->_categorie = $categorie;
         $liste->_bdd = $bdd;
-        $liste->afficherListe();
+        $liste->Joueur();
 ?>
 
    </select>

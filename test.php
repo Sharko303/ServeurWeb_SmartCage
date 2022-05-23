@@ -65,9 +65,9 @@ require_once ('jpgraph-4.4.0/src/jpgraph_line.php');
         }
         $datay1 = $score;
 
-        // Setup the graph
+        // on crée le graph
         $graph = new Graph(400,350);
-        $graph->SetScale("textlin");
+        $graph->SetScale("textlin",0,3);
 
         $theme_class=new UniversalTheme;
 
@@ -89,16 +89,17 @@ require_once ('jpgraph-4.4.0/src/jpgraph_line.php');
         $graph->xaxis->SetTickLabels($_date);
         $graph->xgrid->SetColor('#E3E3E3');
         $graph->xaxis->SetLabelAngle(90);
+        $graph->SetClipping(true);
 
-        // Create the first line
+        // on crée notre premiere ligne
         $p1 = new LinePlot($datay1);
         $graph->Add($p1);
-        $p1->SetColor("#6495ED");
+        $p1->SetColor("#7B7B7B");
         $p1->SetLegend('Score');
 
         $graph->legend->SetFrameWeight(1);
 
-        // Output line
+        // sortie
         $graph->Stroke();
 
 ?>
