@@ -35,6 +35,7 @@ class CProgression
         {
             $_bdd = $this->_bdd;
             $_categorie = $this->_categorie;
+            echo $_categorie;
             $sql = 'SELECT nom FROM utilisateurs WHERE categorie = "'.$_categorie.'"';
             //$liste = $bdd->query($sql) as $bdd);
             $liste = $_bdd->query($sql);
