@@ -31,6 +31,36 @@
              <link rel="stylesheet" href="/ServeurWeb_SmartCage/css/style.css" media="screen" type="text/css" />
         </head>
         <body>
+            <script>
+                    
+                    function afficherU15(etat)
+                    {
+                        document.getElementById("U15").style.visibility=etat;
+                        document.getElementById("U13").style.visibility='hidden';
+                        document.getElementById("U9").style.visibility='hidden';
+                        document.getElementById("U7").style.visibility='hidden';
+                    }
+                    function afficherU13(etat)
+                    {
+                        document.getElementById("U15").style.visibility='hidden';
+                        document.getElementById("U13").style.visibility=etat;
+                        document.getElementById("U9").style.visibility='hidden';
+                        document.getElementById("U7").style.visibility='hidden';
+                    }
+                    function afficherU9(etat)
+                    {
+                        document.getElementById("U15").style.visibility='hidden';
+                        document.getElementById("U13").style.visibility='hidden';
+                        document.getElementById("U9").style.visibility=etat;
+                        document.getElementById("U7").style.visibility='hidden';
+
+                    function afficherU7(etat)
+                    {
+                        document.getElementById("U15").style.visibility='hidden';
+                        document.getElementById("U13").style.visibility='hidden';
+                        document.getElementById("U9").style.visibility='hidden';
+                        document.getElementById("U7").style.visibility=etat;
+            </script>
             <div class="menu">
         <nav>   
             <ul>    
@@ -43,22 +73,61 @@
     </div>
         <form class="deroulant" action="progression.php" method="post">
             <label><b>Categorie :</b></label>       
-                    <input type="radio" name="categorie" id="U7" value="U7";>U6/U7 
-                    <input type="radio" name="categorie" id="U9" value="U9">U8/U9
-                    <input type="radio" name="categorie" id="U13" value="U13">U10-U13
-                    <input type="radio" name="categorie" id="U15+" value="U15+">U15+
+                    <input type="radio" name="categorie" id="U7" value="U7"onclick="afficherU7('visible');">;>U6/U7 
+                    <input type="radio" name="categorie" id="U9" value="U9"onclick="afficherU9('visible');">>U8/U9
+                    <input type="radio" name="categorie" id="U13" value="U13"onclick="afficherU13('visible');">>U10-U13
+                    <input type="radio" name="categorie" id="U15+" value="U15+"onclick="afficherU15('visible');">>U15+
                     </select> <br>
    Nom du joueur :
+   <div id="U15" style=" visibility:hidden; position: absolute;">
    <select name="nom" >
       <option value=0>Choisir
 <?php
-        $doc = new DomDocument;
-        $categorie = $doc->getElementByID('U7');
+        $categorie = 'U15+';
         $liste = new CProgression();
         $liste->_categorie = $categorie;
         $liste->_bdd = $bdd;
         $liste->Joueur();
 ?>
+      </option>
+   </div>
+   <div id="U13" style=" visibility:hidden; position: absolute;">
+   <select name="nom" >
+      <option value=0>Choisir
+<?php
+        $categorie = 'U13';
+        $liste = new CProgression();
+        $liste->_categorie = $categorie;
+        $liste->_bdd = $bdd;
+        $liste->Joueur();
+?>
+      </option>
+   </div>
+   <div id="U9" style=" visibility:hidden; position: absolute;">
+   <select name="nom" >
+      <option value=0>Choisir
+<?php
+        $categorie = 'U9';
+        $liste = new CProgression();
+        $liste->_categorie = $categorie;
+        $liste->_bdd = $bdd;
+        $liste->Joueur();
+?>
+      </option>
+   </div>
+   <div id="U7" style=" visibility:hidden; position: absolute;">
+   <select name="nom" >
+      <option value=0>Choisir
+<?php
+        $categorie = 'U7';
+        $liste = new CProgression();
+        $liste->_categorie = $categorie;
+        $liste->_bdd = $bdd;
+        $liste->Joueur();
+?>
+      </option>
+   </div>
+
 
    </select>
    <input type="submit" name="submit" value="Progression">
