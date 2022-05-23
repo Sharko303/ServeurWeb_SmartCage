@@ -91,7 +91,7 @@
 ?>
       </option>
    </div>
-   <div id="U13" style=" visibility:hidden; position: absolute;">
+   <div id="U13" style=" visibility:'visible'; position: absolute;">
    <select name="nom" >
       <option value=0>Choisir
 <?php
