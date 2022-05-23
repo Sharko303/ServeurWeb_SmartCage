@@ -35,31 +35,33 @@
                     
                     function afficherU15(etat)
                     {
-                        document.getElementById("U15").style.visibility=etat;
-                        document.getElementById("U13").style.visibility='hidden';
-                        document.getElementById("U9").style.visibility='hidden';
-                        document.getElementById("U7").style.visibility='hidden';
+                        document.getElementById("senior").style.visibility=etat;
+                        document.getElementById("minime").style.visibility='hidden';
+                        document.getElementById("benjamin").style.visibility='hidden';
+                        document.getElementById("poussin").style.visibility='hidden';
                     }
                     function afficherU13(etat)
                     {
-                        document.getElementById("U15").style.visibility='hidden';
-                        document.getElementById("U13").style.visibility=etat;
-                        document.getElementById("U9").style.visibility='hidden';
-                        document.getElementById("U7").style.visibility='hidden';
+                        document.getElementById("senior").style.visibility='hidden';
+                        document.getElementById("minime").style.visibility=etat;
+                        document.getElementById("benjamin").style.visibility='hidden';
+                        document.getElementById("poussin").style.visibility='hidden';
                     }
                     function afficherU9(etat)
                     {
-                        document.getElementById("U15").style.visibility='hidden';
-                        document.getElementById("U13").style.visibility='hidden';
-                        document.getElementById("U9").style.visibility=etat;
-                        document.getElementById("U7").style.visibility='hidden';
+                        document.getElementById("senior").style.visibility='hidden';
+                        document.getElementById("minime").style.visibility='hidden';
+                        document.getElementById("benjamin").style.visibility=etat;
+                        document.getElementById("poussin").style.visibility='hidden';
+                    }
 
                     function afficherU7(etat)
                     {
-                        document.getElementById("U15").style.visibility='hidden';
-                        document.getElementById("U13").style.visibility='hidden';
-                        document.getElementById("U9").style.visibility='hidden';
-                        document.getElementById("U7").style.visibility=etat;
+                        document.getElementById("senior").style.visibility='hidden';
+                        document.getElementById("minime").style.visibility='hidden';
+                        document.getElementById("benjamin").style.visibility='hidden';
+                        document.getElementById("poussin").style.visibility=etat;
+                    }
             </script>
             <div class="menu">
         <nav>   
@@ -73,15 +75,14 @@
     </div>
         <form class="deroulant" action="progression.php" method="post">
             <label><b>Categorie :</b></label>       
-                    <input type="radio" name="categorie" id="U7" value="U7"onclick="afficherU7('visible');">U6/U7 
-                    <input type="radio" name="categorie" id="U9" value="U9"onclick="afficherU9('visible');">U8/U9
-                    <input type="radio" name="categorie" id="U13" value="U13"onclick="afficherU13('visible');">U10-U13
-                    <input type="radio" name="categorie" id="U15+" value="U15+"onclick="afficherU15('visible');">U15+
+                    <input type="radio" name="categorie" value="U7"onclick="afficherU7('visible');">U6/U7
+                    <input type="radio" name="categorie" value="U9"onclick="afficherU9('visible');">U8/U9
+                    <input type="radio" name="categorie" value="U13"onclick="afficherU13('visible');">U10-U13
+                    <input type="radio" name="categorie" value="U15+" onclick="afficherU15('visible');">U15+
                     </select> <br>
-   Nom du joueur :
-   <div id="U15" style=" visibility:hidden; position: absolute;">
+      <div id="senior" style=" visibility:hidden; position: absolute;">U15
    <select name="nom" >
-      <option value=0>Choisir
+      <option value=0>Nom du joueur :
 <?php
         $categorie = 'U15+';
         $liste = new CProgression();
@@ -90,10 +91,12 @@
         $liste->Joueur();
 ?>
       </option>
+  </select>
    </div>
-   <div id="U13" style=" visibility:'visible'; position: absolute;">
-   <select name="nom" >
-      <option value=0>Choisir
+   
+   <div id="minime" style=" visibility:hidden; position: absolute;">U13
+   <select name="nom1" >
+      <option value=0>Nom du joueur :
 <?php
         $categorie = 'U13';
         $liste = new CProgression();
@@ -102,10 +105,11 @@
         $liste->Joueur();
 ?>
       </option>
+  </select>
    </div>
-   <div id="U9" style=" visibility:hidden; position: absolute;">
-   <select name="nom" >
-      <option value=0>Choisir
+   <div id="benjamin" style=" visibility:hidden; position: absolute;">U9
+   <select name="nom2" >
+      <option value=0>Nom du joueur :
 <?php
         $categorie = 'U9';
         $liste = new CProgression();
@@ -114,10 +118,11 @@
         $liste->Joueur();
 ?>
       </option>
+  </select>
    </div>
-   <div id="U7" style=" visibility:hidden; position: absolute;">
-   <select name="nom" >
-      <option value=0>Choisir
+   <div id="poussin" style=" visibility:hidden; position: absolute;">U7
+   <select name="nom3" >
+      <option value=0>Nom du joueur :
 <?php
         $categorie = 'U7';
         $liste = new CProgression();
@@ -126,17 +131,16 @@
         $liste->Joueur();
 ?>
       </option>
+  </select>
    </div>
 
-
-   </select>
    <input type="submit" name="submit" value="Progression">
 </form>
 <div class="joueur">
 <?php
 if(!empty($_POST['submit'])) // je verifie que le bouton "Progression a bien était activer"
 {   
-        if($_POST["nom"]=="0")
+        if($_POST["nom"]=="0" && $_POST["nom1"]=="0" && $_POST["nom2"]=="0" && $_POST["nom3"]=="0")
          {
             echo 'Choisir un joueur';
          }else
@@ -238,6 +242,12 @@ if(!empty($_POST['submit'])) // je verifie que le bouton "Progression a bien ét
             display: block;
             text-align: center;
             margin-top: 20px;
+        }
+
+        #U15, #U13, #U9 #U7
+        {
+            display: block;
+            text-align: center;
         }
         </style>
 </body>
