@@ -32,16 +32,18 @@ require_once 'CJoueur.php'
 
         <div class="joueur" style="text-align: center; margin-top: 30px"> 
            <table border="5">
-            <tr><th>Nom</th><th>Prenom</th> <th>Categorie</th> <th>Progression</th></tr>
+            <tr><th>Nom</th><th>Prenom</th> <th>Categorie</th></tr>
            <?php while($row = $stmt->fetch(PDO::FETCH_ASSOC)) : ?>
      <tr>
        <td><?php echo htmlspecialchars($row['nom']); ?></td>
        <td><?php echo htmlspecialchars($row['prenom']); ?></td>
        <td><?php echo htmlspecialchars($row['categorie']); ?></td>
-       <td><a style="color: orange; text-decoration: none;" href="progression.php"> Progression </a></td>
      </tr>
      <?php endwhile; ?>
     </table>
+
+    <a style="color: orange; text-decoration: none; text-align: center; display: block; margin-top:20px; font-size: 50px; border: 1px solid; padding-right: auto; padding-left: auto" href="progression.php"> Progression </a>
+
         </div>
     <footer style="text-align: center; margin-top: 20px;">
         <p> Retrouver toutes les infos (RÉSULTATS & CALENDRIERS DU CLUB LES ÉQUIPES)</p>
