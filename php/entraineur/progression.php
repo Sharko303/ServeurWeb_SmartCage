@@ -80,7 +80,7 @@
                     <input type="radio" name="categorie" value="U13"onclick="afficherU13('visible');">U10-U13
                     <input type="radio" name="categorie" value="U15+" onclick="afficherU15('visible');">U15+
                     </select> <br>
-      <div id="senior" style=" visibility:hidden; position: absolute;">U15
+      <div id="senior" style=" visibility:hidden;">U15
    <select name="nom" >
       <option value=0>Nom du joueur :
 <?php
@@ -94,7 +94,7 @@
   </select>
    </div>
    
-   <div id="minime" style=" visibility:hidden; position: absolute;">U13
+   <div id="minime" style=" visibility:hidden;">U13
    <select name="nom1" >
       <option value=0>Nom du joueur :
 <?php
@@ -107,7 +107,7 @@
       </option>
   </select>
    </div>
-   <div id="benjamin" style=" visibility:hidden; position: absolute;">U9
+   <div id="benjamin" style=" visibility:hidden; ">U9
    <select name="nom2" >
       <option value=0>Nom du joueur :
 <?php
@@ -120,7 +120,7 @@
       </option>
   </select>
    </div>
-   <div id="poussin" style=" visibility:hidden; position: absolute;">U7
+   <div id="poussin" style=" visibility:hidden;">U7
    <select name="nom3" >
       <option value=0>Nom du joueur :
 <?php
@@ -134,7 +134,7 @@
   </select>
    </div>
 
-   <input type="submit" name="submit" value="Progression">
+   <input type="submit" class="submit" name="submit" value="Progression">
 </form>
 <div class="joueur">
 <?php
@@ -236,6 +236,7 @@ if(!empty($_POST['submit'])) // je verifie que le bouton "Progression a bien ét
             margin-left: auto;
             text-align: center;
             width: 100px;
+            font-size: 50px;
         }
         .deroulant
         {
@@ -244,11 +245,13 @@ if(!empty($_POST['submit'])) // je verifie que le bouton "Progression a bien ét
             margin-top: 20px;
         }
 
-        #U15, #U13, #U9 #U7
+        #benjamin, #senior, #minime, #poussin
         {
             display: block;
             text-align: center;
         }
+
+
         </style>
 </body>
 </html>

@@ -95,7 +95,7 @@ require_once ('jpgraph-4.4.0/src/jpgraph_line.php');
         $p1 = new LinePlot($datay1);
         $graph->Add($p1);
         $p1->SetColor("#7B7B7B");
-        $p1->SetLegend('Score');
+        
 
         $graph->legend->SetFrameWeight(1);
 
