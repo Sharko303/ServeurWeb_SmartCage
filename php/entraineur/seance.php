@@ -20,16 +20,23 @@ if ($_SESSION["type"] == 'joueur')
         <body>
         <div class="login-form">
             <?php 
-                if(isset($_GET['joueur_err']))
+                if(isset($_GET['seance_err']))
                 {
-                    $err = htmlspecialchars($_GET['joueur_err']);
+                    $err = htmlspecialchars($_GET['seance_err']);
 
                     switch($err)
                     {
-                        case 'aucun':
+                        case 'joueur':
                         ?>
                             <div class="alert">
                                 <strong>Erreur</strong> aucun joueur sélectionné !
+                            </div>
+                        <?php
+                        break;
+                        case 'zone':
+                        ?>
+                            <div class="alert">
+                                <strong>Erreur</strong> aucune zone sélectionné !
                             </div>
                         <?php
                         break;
@@ -45,6 +52,8 @@ if ($_SESSION["type"] == 'joueur')
                         document.getElementById("moyenne").style.visibility='hidden';
                         document.getElementById("moyenne2").style.visibility='hidden';
                         document.getElementById("petite").style.visibility='hidden';
+                        document.getElementById("liste2").style.visibility='hidden';
+                        document.getElementById("liste3").style.visibility='hidden';
                     }
                     function afficherU13(etat)
                     {
@@ -52,13 +61,30 @@ if ($_SESSION["type"] == 'joueur')
                         document.getElementById("moyenne").style.visibility=etat;
                         document.getElementById("moyenne2").style.visibility='hidden';
                         document.getElementById("petite").style.visibility='hidden';
+                        document.getElementById("liste2").style.visibility=etat;
+                        document.getElementById("liste3").style.visibility='hidden';
                     }
+                    /*function listeU9(etat)
+                    {
+                        document.getElementById("listeU9").style.visibility=etat;
+                        document.getElementById("listeU13").style.visibility='hidden';
+
+                    }
+                    function listeU13(etat)
+                    {
+                        document.getElementById("listeU9").style.visibility='hidden';
+                        document.getElementById("liste2").style.visibility=etat;
+
+                    }*/
                     function afficherU9(etat)
                     {
                         document.getElementById("grande").style.visibility='hidden';
-                        document.getElementById("moyenne").style.visibility='hidden';
-                        document.getElementById("moyenne2").style.visibility=etat;
+                        document.getElementById("moyenne").style.visibility=etat;
+                        document.getElementById("moyenne2").style.visibility='hidden';
                         document.getElementById("petite").style.visibility='hidden';
+                        document.getElementById("liste2").style.visibility='hidden';
+                        document.getElementById("liste3").style.visibility=etat;
+
                     }
 
                     function afficherU7(etat)
@@ -67,6 +93,8 @@ if ($_SESSION["type"] == 'joueur')
                         document.getElementById("moyenne").style.visibility='hidden';
                         document.getElementById("moyenne2").style.visibility='hidden';
                         document.getElementById("petite").style.visibility=etat;
+                        document.getElementById("liste2").style.visibility='hidden';
+                        document.getElementById("liste3").style.visibility='hidden';
                     }
             </script>
             <div id="container">
@@ -135,8 +163,7 @@ if ($_SESSION["type"] == 'joueur')
                     
                     <!-- Affichage de la moyenne Cage -->
 
-                <div id="moyenne" style=" visibility:hidden; float: left; position: absolute;">
-                    <div class="liste">
+                    <div id="liste2" style=" visibility:hidden;position: block;">
                             <?php
                                $categorie = "U13";
                                     $liste = new CSeance();
@@ -145,6 +172,23 @@ if ($_SESSION["type"] == 'joueur')
                                     $liste->afficherJoueur();
                             ?>
                         </div>
+                        <div id="liste3" style=" visibility:hidden;position: block;">
+                            <?php
+                               $categorie = "U9";
+                                    $liste = new CSeance();
+                                    $liste->_categorie = $categorie;
+                                    $liste->_bdd = $bdd;
+                                    $liste->afficherJoueur();
+                            ?>
+                        </div>
+                <div id="moyenne" style=" visibility:hidden; float: left; position: absolute;">
+                    <?php
+                               /*$categorie = "U13";
+                                    $liste = new CSeance();
+                                    $liste->_categorie = $categorie;
+                                    $liste->_bdd = $bdd;
+                                    $liste->afficherJoueur();*/
+                            ?>
                     Moyenne  Cage :
                 <br>
                 <br>
@@ -163,7 +207,7 @@ if ($_SESSION["type"] == 'joueur')
                 </div>
                 <!-- Affichage de la moyenne Cage -->
 
-                <div id="moyenne2" style=" visibility:hidden; float: left; position: absolute;">
+               <div id="moyenne2" style=" visibility:hidden; float: left; position: absolute;">
                     <div class="liste">
                             <?php
 

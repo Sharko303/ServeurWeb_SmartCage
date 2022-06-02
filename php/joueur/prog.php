@@ -1,6 +1,20 @@
-<?php  
-session_start();
+<?php
+    require_once "../entraineur/CProgression.php";
+    require_once '../config.php';
+
+    session_start();
+    
+
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Progression - SmartCage</title>
+</head>
+<body>
+    
+
 <!DOCTYPE html>
     <html lang="fr">
         <head>
@@ -18,29 +32,20 @@ session_start();
             </ul>
         </nav>
     </div>
+            
 
-        <div class="sucess">
-    <h1 style="margin-bottom: 10px">Bienvenue <?php echo $_SESSION['nom']; ?>!</h1>
-    <img style="margin-bottom: 20px;" src="/ServeurWeb_SmartCage/images/fc_maurin.jpg">
-    <p style="margin-bottom: 20px;">C'est votre espace joueur.</p>
-    <a href="/ServeurWeb_SmartCage/deconnexion.php">Déconnexion</a>
+<div class="graph">
+<?php
+if(!empty($_SESSION["nom"])) // je verifie que le bouton "Progression a bien était activer"
+{   
+            $liste= new CProgression();
+            $joueur = $_SESSION["nom"];
+            $liste->_bdd = $bdd;
+            $liste->afficherGraph($joueur);
+}
+?>
     </div>
-    <footer style="text-align: center; margin-top: 20px;">
-        <p> Retrouver toutes les infos (RÉSULTATS & CALENDRIERS DU CLUB LES ÉQUIPES)</p>
-
-        <p>Rubrique Actualités Liens Utiles (FC Maurin) <a href="https://fc-maurin.footeo.com/"> ici </a></p>
-
- 
-        <p>Site Facebook FC Maurin</p>
-
-        <p>Président : Marcel Aquaviva tel 06.10.03.66.24</p>
-
-        <p>Trésorière : Carmen Leyzat tel</p>
-
-        <p>06.88.20.44.58</p>
-    </footer>
-        </body>
-        <style>
+<style>
             /* On reset le CSS afin d'enlever les bordure */
         body
         {
@@ -65,15 +70,16 @@ session_start();
         nav ul li
         {
             float: left;
-            width: 33.33%;
+            width: 25%;
             text-align: center;
             position: relative;
         }
-        nav ul::after{
+        nav ul::after
+        {
         content: "";
         display: table;
         clear: both;
-    }
+        }
         nav a
         {
         display: block;
@@ -96,5 +102,45 @@ session_start();
             text-align: center;
             margin-top: 10px;
         }
+        table
+        {
+            width: 90%;
+            margin-left: 60px;
+            margin-right: 60px;
+        }
+        .graph
+        {
+            margin-top: 20px;
+            display: block;
+            width: 90%;
+            text-align: center;
+            margin-right: auto;
+            margin-left: auto;
+        }
+        .joueur
+        {
+            display: block;
+            margin-top: 20px;
+            margin-right: auto;
+            margin-left: auto;
+            text-align: center;
+            width: 100px;
+            font-size: 50px;
+        }
+        .deroulant
+        {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #benjamin, #senior, #minime, #poussin
+        {
+            display: block;
+            text-align: center;
+        }
+
+
         </style>
+</body>
 </html>

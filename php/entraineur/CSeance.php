@@ -98,7 +98,7 @@ class CSeance
                                 }
                 } else 
                 {
-                    header('Location:/ServeurWeb_SmartCage/php/entraineur/seance.php?seance_err=erreur');
+                    header('Location:/ServeurWeb_SmartCage/php/entraineur/seance.php?seance_err=zone');
                 }
                 
             }
@@ -120,7 +120,10 @@ class CSeance
                                 $id_joueur[$i]=$rep_id_joueur[$i]->fetch();
                                 //print_r($id_joueur[$i][0]);
                                 
-                            }
+                            }else
+                                {
+                                    header('Location:/ServeurWeb_SmartCage/php/entraineur/seance.php?seance_err=joueur');
+                                }
                     }
 
                     

@@ -57,7 +57,12 @@ class CProgression
     function afficherGraph($joueur)
     {
         $_bdd = $this->_bdd;
-        $_joueur = htmlspecialchars($_POST['nom']);
+        //$_joueur = htmlspecialchars($_POST['nom']);
+        $_joueur = $joueur;
+        if (isset($_joueur)) 
+        {
+            $_joueur = $_SESSION['nom'];
+        }
         echo "<img src='../../test.php?joueur=".$_joueur."' width='750' height='750'>";
     }
 }
