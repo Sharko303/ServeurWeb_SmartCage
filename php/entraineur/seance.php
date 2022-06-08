@@ -54,6 +54,7 @@ if ($_SESSION["type"] == 'joueur')
                         document.getElementById("petite").style.visibility='hidden';
                         document.getElementById("liste2").style.visibility='hidden';
                         document.getElementById("liste3").style.visibility='hidden';
+                        document.getElementById("moyliste").style.visibility='hidden';
                     }
                     function afficherU13(etat)
                     {
@@ -63,6 +64,8 @@ if ($_SESSION["type"] == 'joueur')
                         document.getElementById("petite").style.visibility='hidden';
                         document.getElementById("liste2").style.visibility=etat;
                         document.getElementById("liste3").style.visibility='hidden';
+                        document.getElementById("moyliste").style.visibility=etat;
+
                     }
                     /*function listeU9(etat)
                     {
@@ -84,6 +87,7 @@ if ($_SESSION["type"] == 'joueur')
                         document.getElementById("petite").style.visibility='hidden';
                         document.getElementById("liste2").style.visibility='hidden';
                         document.getElementById("liste3").style.visibility=etat;
+                        document.getElementById("moyliste").style.visibility=etat;
 
                     }
 
@@ -95,6 +99,7 @@ if ($_SESSION["type"] == 'joueur')
                         document.getElementById("petite").style.visibility=etat;
                         document.getElementById("liste2").style.visibility='hidden';
                         document.getElementById("liste3").style.visibility='hidden';
+                        document.getElementById("moyliste").style.visibility='hidden';
                     }
             </script>
             <div id="container">
@@ -162,33 +167,36 @@ if ($_SESSION["type"] == 'joueur')
                 </div>
                     
                     <!-- Affichage de la moyenne Cage -->
+                    <div id="moyliste" style="position: absolute;visibility:hidden;">
+                        <div style="display: inline-block;">
+                        <div id="liste2" style=" visibility:hidden; position: relative; overflow: hidden; float: left;">
+                                <div class="liste">
+                                <?php
+                                   $categorie = "U13";
+                                        $liste = new CSeance();
+                                        $liste->_categorie = $categorie;
+                                        $liste->_bdd = $bdd;
+                                        $liste->afficherJoueur();
+                                ?>
+                                </div>
+                            </div>
+                            <div id="liste3" style=" visibility:hidden; position: absolute;">
+                                <div class="liste">
+                                <?php
+                                   $categorie = "U9";
+                                        $liste = new CSeance();
+                                        $liste->_categorie = $categorie;
+                                        $liste->_bdd = $bdd;
+                                        $liste->afficherJoueur();
+                                ?>
+                                </div>
+                            </div>
+                    </div>
 
-                    <div id="liste2" style=" visibility:hidden;position: block;">
-                            <?php
-                               $categorie = "U13";
-                                    $liste = new CSeance();
-                                    $liste->_categorie = $categorie;
-                                    $liste->_bdd = $bdd;
-                                    $liste->afficherJoueur();
-                            ?>
-                        </div>
-                        <div id="liste3" style=" visibility:hidden;position: block;">
-                            <?php
-                               $categorie = "U9";
-                                    $liste = new CSeance();
-                                    $liste->_categorie = $categorie;
-                                    $liste->_bdd = $bdd;
-                                    $liste->afficherJoueur();
-                            ?>
-                        </div>
-                <div id="moyenne" style=" visibility:hidden; float: left; position: absolute;">
-                    <?php
-                               /*$categorie = "U13";
-                                    $liste = new CSeance();
-                                    $liste->_categorie = $categorie;
-                                    $liste->_bdd = $bdd;
-                                    $liste->afficherJoueur();*/
-                            ?>
+                <div id="moyenne" style=" visibility:hidden; display: block; position: relative;">
+                    <b>Zone de tir :</b>
+                    <br>
+                    <br>
                     Moyenne  Cage :
                 <br>
                 <br>
@@ -205,9 +213,10 @@ if ($_SESSION["type"] == 'joueur')
                     <input type="checkbox" name="4" value="4" id="position-14" class="checkbox-button" />
                     <label for="position-14">Position 4</label>
                 </div>
+                </div>
                 <!-- Affichage de la moyenne Cage -->
-
-               <div id="moyenne2" style=" visibility:hidden; float: left; position: absolute;">
+               
+               <div id="moyenne2" style=" visibility:hidden; float: left; position: relative;">
                     <div class="liste">
                             <?php
 

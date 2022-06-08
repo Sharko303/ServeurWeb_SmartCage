@@ -79,8 +79,8 @@
                     <input type="radio" name="categorie" value="U9"onclick="afficherU9('visible');">U8/U9
                     <input type="radio" name="categorie" value="U13"onclick="afficherU13('visible');">U10-U13
                     <input type="radio" name="categorie" value="U15+" onclick="afficherU15('visible');">U15+
-                    </select> <br>
-      <div id="senior" style=" visibility:hidden;">U15
+                    </select> <br> <br>
+      <div id="senior" style=" visibility:hidden; position: absolute;">U15
    <select name="nom" >
       <option value=0>Nom du joueur :
 <?php
@@ -94,7 +94,7 @@
   </select>
    </div>
    
-   <div id="minime" style=" visibility:hidden;">U13
+   <div id="minime" style=" visibility:hidden; position:absolute;">U13
    <select name="nom1" >
       <option value=0>Nom du joueur :
 <?php
@@ -107,7 +107,7 @@
       </option>
   </select>
    </div>
-   <div id="benjamin" style=" visibility:hidden; ">U9
+   <div id="benjamin" style=" visibility:hidden;position: absolute;">U9
    <select name="nom2" >
       <option value=0>Nom du joueur :
 <?php
@@ -120,7 +120,7 @@
       </option>
   </select>
    </div>
-   <div id="poussin" style=" visibility:hidden;">U7
+   <div id="poussin" style=" visibility:hidden; position:absolute;">U7
    <select name="nom3" >
       <option value=0>Nom du joueur :
 <?php
@@ -133,7 +133,7 @@
       </option>
   </select>
    </div>
-
+<br>
    <input type="submit" class="submit" name="submit" value="Progression">
 </form>
 <div class="joueur">
@@ -247,8 +247,11 @@ if(!empty($_POST['submit'])) // je verifie que le bouton "Progression a bien ét
 
         #benjamin, #senior, #minime, #poussin
         {
-            display: block;
+            
             text-align: center;
+            left: 50%;
+            margin:0 auto;
+            transform: translate(-50%, -50%);
         }
 
 
