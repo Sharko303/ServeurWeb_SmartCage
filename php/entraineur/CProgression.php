@@ -63,7 +63,7 @@ class CProgression
         {
             $_joueur = $_SESSION['nom'];
         }
-        echo "<img src='../../test.php?joueur=".$_joueur."' width='750' height='750'>";
+        echo "<img src='../../graph.php?joueur=".$_joueur."' width='750' height='750'>";
     }
 }
 ?>
